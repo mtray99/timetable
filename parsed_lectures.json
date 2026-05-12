@@ -1,0 +1,2722 @@
+[
+  {
+    "id": 0,
+    "category": "전기-전자공학",
+    "category_multi": "",
+    "name": "(공통)물리1및실험",
+    "professor": "이순녀\n최현희",
+    "hours": 4.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "13:00",
+        "end": "13:50",
+        "room": "조만식기념관 12214"
+      },
+      {
+        "day": "월",
+        "start": "14:00",
+        "end": "14:50",
+        "room": "조만식기념관 12214"
+      },
+      {
+        "day": "월",
+        "start": "15:00",
+        "end": "15:50",
+        "room": "조만식기념관 12530 (경제학과겸임교수강의실"
+      },
+      {
+        "day": "월",
+        "start": "16:00",
+        "end": "16:50",
+        "room": "조만식기념관 12530 (경제학과겸임교수강의실"
+      }
+    ],
+    "target": {
+      "grade": "전체학년",
+      "departments": [
+        "기계",
+        "화공",
+        "전기",
+        "화학",
+        "건축학부",
+        "물리",
+        "컴퓨터",
+        "AI융합",
+        "소프트",
+        "의생명",
+        "신소재",
+        "정통전",
+        "전자정보공학부IT융합",
+        "전자정보공학부-전자공학",
+        "AI소프트"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 1,
+    "category": "전기-전자공학",
+    "category_multi": "",
+    "name": "(공통)물리1및실험",
+    "professor": "김남미",
+    "hours": 4.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "13:00",
+        "end": "13:50",
+        "room": "조만식기념관 12123"
+      },
+      {
+        "day": "수",
+        "start": "14:00",
+        "end": "14:50",
+        "room": "조만식기념관 12123"
+      },
+      {
+        "day": "수",
+        "start": "15:00",
+        "end": "15:50",
+        "room": "백마관 07117"
+      },
+      {
+        "day": "수",
+        "start": "16:00",
+        "end": "16:50",
+        "room": "백마관 07117"
+      }
+    ],
+    "target": {
+      "grade": "전체학년",
+      "departments": [
+        "기계",
+        "화공",
+        "전기",
+        "건축학부",
+        "신소재",
+        "정통전",
+        "전자정보공학부IT융합",
+        "전자정보공학부전자공학",
+        "AI융합",
+        "물리",
+        "화학",
+        "의생명",
+        "소프트",
+        "컴퓨터",
+        "AI소프트"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 2,
+    "category": "전기-전자공학",
+    "category_multi": "",
+    "name": "(공통)물리1및실험",
+    "professor": "김남미\n이순녀",
+    "hours": 4.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "13:00",
+        "end": "13:50",
+        "room": "조만식기념관 12124"
+      },
+      {
+        "day": "수",
+        "start": "14:00",
+        "end": "14:50",
+        "room": "조만식기념관 12124"
+      },
+      {
+        "day": "수",
+        "start": "15:00",
+        "end": "15:50",
+        "room": "백마관 07117"
+      },
+      {
+        "day": "수",
+        "start": "16:00",
+        "end": "16:50",
+        "room": "백마관 07117"
+      }
+    ],
+    "target": {
+      "grade": "전체학년",
+      "departments": [
+        "기계",
+        "화공",
+        "전기",
+        "건축학부",
+        "신소재",
+        "정통전",
+        "전자정보공학부IT융합",
+        "전자정보공학부전자공학",
+        "AI융합",
+        "물리",
+        "화학",
+        "의생명",
+        "소프트",
+        "컴퓨터",
+        "AI소프트"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 3,
+    "category": "전선-전자공학",
+    "category_multi": "",
+    "name": "(전선)두드림Ⅰ-3",
+    "professor": "",
+    "hours": 6.0,
+    "credits": 3.0,
+    "time_slots": [],
+    "target": {
+      "grade": "전체",
+      "departments": []
+    },
+    "has_schedule": false
+  },
+  {
+    "id": 4,
+    "category": "전선-전자공학",
+    "category_multi": "",
+    "name": "(전선)두드림Ⅱ-6",
+    "professor": "",
+    "hours": 12.0,
+    "credits": 6.0,
+    "time_slots": [],
+    "target": {
+      "grade": "전체",
+      "departments": []
+    },
+    "has_schedule": false
+  },
+  {
+    "id": 5,
+    "category": "전선-전자공학",
+    "category_multi": "",
+    "name": "(전선)두드림Ⅲ-3",
+    "professor": "",
+    "hours": 6.0,
+    "credits": 3.0,
+    "time_slots": [],
+    "target": {
+      "grade": "전체",
+      "departments": []
+    },
+    "has_schedule": false
+  },
+  {
+    "id": 6,
+    "category": "전선-전자공학",
+    "category_multi": "",
+    "name": "국내장기현장실습(3)A",
+    "professor": "",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [],
+    "target": {
+      "grade": "전체",
+      "departments": []
+    },
+    "has_schedule": false
+  },
+  {
+    "id": 7,
+    "category": "전선-전자공학",
+    "category_multi": "부선-전자공학",
+    "name": "국내장기현장실습(6)",
+    "professor": "",
+    "hours": 6.0,
+    "credits": 6.0,
+    "time_slots": [],
+    "target": {
+      "grade": "전체",
+      "departments": []
+    },
+    "has_schedule": false
+  },
+  {
+    "id": 8,
+    "category": "전선-전자공학",
+    "category_multi": "",
+    "name": "전공심화전문가양성교육(6)",
+    "professor": "",
+    "hours": 6.0,
+    "credits": 6.0,
+    "time_slots": [],
+    "target": {
+      "grade": "전체",
+      "departments": []
+    },
+    "has_schedule": false
+  },
+  {
+    "id": 9,
+    "category": "전선-전자공학",
+    "category_multi": "융선-모바일어플리케이션",
+    "name": "창업기업실습",
+    "professor": "허공회",
+    "hours": 6.0,
+    "credits": 6.0,
+    "time_slots": [],
+    "target": {
+      "grade": "전체",
+      "departments": []
+    },
+    "has_schedule": false
+  },
+  {
+    "id": 10,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "해외장기현장실습(3)",
+    "professor": "",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [],
+    "target": {
+      "grade": "전체",
+      "departments": []
+    },
+    "has_schedule": false
+  },
+  {
+    "id": 11,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "해외장기현장실습(6)",
+    "professor": "",
+    "hours": 6.0,
+    "credits": 6.0,
+    "time_slots": [],
+    "target": {
+      "grade": "전체",
+      "departments": []
+    },
+    "has_schedule": false
+  },
+  {
+    "id": 12,
+    "category": "전기-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "기초공학수학1",
+    "professor": "최성자",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "형남공학관 05B124"
+      },
+      {
+        "day": "목",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "형남공학관 05B124"
+      }
+    ],
+    "target": {
+      "grade": "1학년",
+      "departments": [
+        "전자공학전공(대상외수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 13,
+    "category": "전기-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "기초공학수학1",
+    "professor": "최현주",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "백마관 07316"
+      },
+      {
+        "day": "목",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "백마관 07316"
+      }
+    ],
+    "target": {
+      "grade": "1학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 14,
+    "category": "전기-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "기초공학수학1",
+    "professor": "장미송",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "09:00",
+        "end": "10:15",
+        "room": "미래관 20203"
+      },
+      {
+        "day": "금",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "문화관 03312"
+      }
+    ],
+    "target": {
+      "grade": "1학년",
+      "departments": [
+        "IT융합전공",
+        "전자공학전공"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 15,
+    "category": "전기-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "물리1및실험",
+    "professor": "최현희",
+    "hours": 4.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "09:00",
+        "end": "09:50",
+        "room": "미래관 20401"
+      },
+      {
+        "day": "월",
+        "start": "10:00",
+        "end": "10:50",
+        "room": "미래관 20401"
+      },
+      {
+        "day": "월",
+        "start": "11:00",
+        "end": "11:50",
+        "room": "조만식기념관 12214"
+      },
+      {
+        "day": "월",
+        "start": "12:00",
+        "end": "12:50",
+        "room": "조만식기념관 12214"
+      }
+    ],
+    "target": {
+      "grade": "1학년",
+      "departments": [
+        "전자공학전공(IT융합수강제한) (대상외수강제한)(대상외수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 16,
+    "category": "전기-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "물리1및실험",
+    "professor": "김남미",
+    "hours": 4.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "09:00",
+        "end": "09:50",
+        "room": "조만식기념관 12214"
+      },
+      {
+        "day": "월",
+        "start": "10:00",
+        "end": "10:50",
+        "room": "조만식기념관 12214"
+      },
+      {
+        "day": "월",
+        "start": "11:00",
+        "end": "11:50",
+        "room": "백마관 07317"
+      },
+      {
+        "day": "월",
+        "start": "12:00",
+        "end": "12:50",
+        "room": "백마관 07317"
+      }
+    ],
+    "target": {
+      "grade": "1학년",
+      "departments": [
+        "전자공학전공(IT융합수강제한) (대상외수강제한)(대상외수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 17,
+    "category": "전기-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "물리1및실험",
+    "professor": "박혜연\n김남미",
+    "hours": 4.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "09:00",
+        "end": "09:50",
+        "room": "조만식기념관 12215 (물리실험실"
+      },
+      {
+        "day": "월",
+        "start": "10:00",
+        "end": "10:50",
+        "room": "조만식기념관 12215 (물리실험실"
+      },
+      {
+        "day": "월",
+        "start": "11:00",
+        "end": "11:50",
+        "room": "백마관 07317"
+      },
+      {
+        "day": "월",
+        "start": "12:00",
+        "end": "12:50",
+        "room": "백마관 07317"
+      }
+    ],
+    "target": {
+      "grade": "1학년",
+      "departments": [
+        "전자공학전공(IT융합수강제한) (대상외수강제한)(대상외수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 18,
+    "category": "전기-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "물리1및실험",
+    "professor": "홍영우\n최현희",
+    "hours": 4.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "09:00",
+        "end": "09:50",
+        "room": "미래관 20401"
+      },
+      {
+        "day": "월",
+        "start": "10:00",
+        "end": "10:50",
+        "room": "미래관 20401"
+      },
+      {
+        "day": "월",
+        "start": "11:00",
+        "end": "11:50",
+        "room": "조만식기념관 12215 (물리실험실"
+      },
+      {
+        "day": "월",
+        "start": "12:00",
+        "end": "12:50",
+        "room": "조만식기념관 12215 (물리실험실"
+      }
+    ],
+    "target": {
+      "grade": "1학년",
+      "departments": [
+        "전자공학전공"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 19,
+    "category": "전기-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "일반화학",
+    "professor": "장병하",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "문화관 03312"
+      },
+      {
+        "day": "목",
+        "start": "09:00",
+        "end": "10:15",
+        "room": "문화관 03312"
+      }
+    ],
+    "target": {
+      "grade": "1학년",
+      "departments": [
+        "전자공학(대상외수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 20,
+    "category": "전기-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "일반화학",
+    "professor": "장상목",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "문화관 03105"
+      },
+      {
+        "day": "목",
+        "start": "09:00",
+        "end": "10:15",
+        "room": "문화관 03105"
+      }
+    ],
+    "target": {
+      "grade": "1학년",
+      "departments": [
+        "전자공학(대상외수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 21,
+    "category": "전필-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "공학수학",
+    "professor": "신현출",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "문화관 03312"
+      },
+      {
+        "day": "금",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "형남공학관 05103 (정용기강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 22,
+    "category": "전필-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "공학수학",
+    "professor": "신현출",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "문화관 03312"
+      },
+      {
+        "day": "금",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "형남공학관 05103 (정용기강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 23,
+    "category": "전필-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "공학수학",
+    "professor": "정동현",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "미래관 20107"
+      },
+      {
+        "day": "금",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "미래관 20107"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 24,
+    "category": "전필-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "공학수학",
+    "professor": "정원국",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "09:00",
+        "end": "10:15",
+        "room": "미래관 20204 (윤동주강의실"
+      },
+      {
+        "day": "목",
+        "start": "09:00",
+        "end": "10:15",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 25,
+    "category": "전필-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "공학수학",
+    "professor": "정원국",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      },
+      {
+        "day": "목",
+        "start": "16:30",
+        "end": "17:45",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 26,
+    "category": "전기-전자공학",
+    "category_multi": "",
+    "name": "기초공학수학1",
+    "professor": "이상욱",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "백마관 07218"
+      },
+      {
+        "day": "금",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "진리관 11516"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "신소재",
+        "전기",
+        "기계",
+        "화공",
+        "산업정보",
+        "건축학부",
+        "건축공학",
+        "AI융합",
+        "전자정보공학부-IT융합",
+        "전자정보공학부-전자공학",
+        "컴퓨터\n3학년 신소재",
+        "전기",
+        "기계",
+        "화공",
+        "산업정보",
+        "건축학부",
+        "건축공학",
+        "AI융합",
+        "전자정보공학부-IT융합",
+        "전자정보공학부-전자공학",
+        "컴퓨터\n4학년 신소재",
+        "전기",
+        "기계",
+        "화공",
+        "산업정보",
+        "건축학부",
+        "건축공학",
+        "AI융합",
+        "전"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 27,
+    "category": "전기-전자공학",
+    "category_multi": "",
+    "name": "기초공학수학1",
+    "professor": "정달영",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "교육관 06302"
+      },
+      {
+        "day": "목",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "안익태기념관 04402"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "신소재",
+        "전기",
+        "기계",
+        "화공",
+        "산업정보",
+        "건축학부",
+        "건축공학",
+        "AI융합",
+        "전자정보공학부-IT융합",
+        "전자정보공학부-전자공학",
+        "컴퓨터\n3학년 신소재",
+        "전기",
+        "기계",
+        "화공",
+        "산업정보",
+        "건축학부",
+        "건축공학",
+        "AI융합",
+        "전자정보공학부-IT융합",
+        "전자정보공학부-전자공학",
+        "컴퓨터\n4학년 신소재",
+        "전기",
+        "기계",
+        "화공",
+        "산업정보",
+        "건축학부",
+        "건축공학",
+        "AI융합",
+        "전"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 28,
+    "category": "전필-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "디지털공학",
+    "professor": "양승인",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "09:00",
+        "end": "10:15",
+        "room": "형남공학관 05105 (심영복강의실"
+      },
+      {
+        "day": "목",
+        "start": "09:00",
+        "end": "10:15",
+        "room": "형남공학관 05105 (심영복강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 29,
+    "category": "전필-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "디지털공학",
+    "professor": "차형태",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "벤처중소기업센터 10311"
+      },
+      {
+        "day": "수",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 30,
+    "category": "전필-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "디지털공학",
+    "professor": "차형태",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "벤처중소기업센터 10311"
+      },
+      {
+        "day": "수",
+        "start": "16:30",
+        "end": "17:45",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 31,
+    "category": "전필-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "디지털공학",
+    "professor": "권혁주",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "미래관 20204 (윤동주강의실"
+      },
+      {
+        "day": "금",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 32,
+    "category": "전필-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "디지털공학",
+    "professor": "권혁주",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "16:30",
+        "end": "17:45",
+        "room": "미래관 20204 (윤동주강의실"
+      },
+      {
+        "day": "금",
+        "start": "16:30",
+        "end": "17:45",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 33,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-스마트자동차융합",
+    "name": "물리전자",
+    "professor": "이호진",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "미래관 20402"
+      },
+      {
+        "day": "금",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "형남공학관 05102"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "스마트자동차융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 34,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-스마트자동차융합",
+    "name": "물리전자",
+    "professor": "이호진",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "미래관 20402"
+      },
+      {
+        "day": "금",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "형남공학관 05102"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "스마트자동차융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 35,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-스마트자동차융합",
+    "name": "물리전자",
+    "professor": "유건욱",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "형남공학관 05105 (심영복강의실"
+      },
+      {
+        "day": "목",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "형남공학관 05105 (심영복강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "스마트자동차융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 36,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-스마트자동차융합",
+    "name": "물리전자",
+    "professor": "송인채",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "형남공학관 05112 (배명진강의실"
+      },
+      {
+        "day": "목",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "스마트자동차융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 37,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-스마트자동차융합",
+    "name": "물리전자",
+    "professor": "송인채",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      },
+      {
+        "day": "목",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "스마트자동차융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 38,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자공학기초실험",
+    "professor": "임명식",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "15:00",
+        "end": "15:50",
+        "room": "형남공학관 05313"
+      },
+      {
+        "day": "월",
+        "start": "16:00",
+        "end": "16:50",
+        "room": "형남공학관 05313"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 39,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자공학기초실험",
+    "professor": "임명식",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "17:00",
+        "end": "17:50",
+        "room": "형남공학관 05313"
+      },
+      {
+        "day": "월",
+        "start": "18:00",
+        "end": "18:50",
+        "room": "형남공학관 05313"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 40,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자공학기초실험",
+    "professor": "임명식",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "15:00",
+        "end": "15:50",
+        "room": "형남공학관 05313"
+      },
+      {
+        "day": "화",
+        "start": "16:00",
+        "end": "16:50",
+        "room": "형남공학관 05313"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 41,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자공학기초실험",
+    "professor": "임명식",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "17:00",
+        "end": "17:50",
+        "room": "형남공학관 05313"
+      },
+      {
+        "day": "화",
+        "start": "18:00",
+        "end": "18:50",
+        "room": "형남공학관 05313"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 42,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자공학기초실험",
+    "professor": "임명식",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "금",
+        "start": "15:00",
+        "end": "15:50",
+        "room": "형남공학관 05313"
+      },
+      {
+        "day": "금",
+        "start": "16:00",
+        "end": "16:50",
+        "room": "형남공학관 05313"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 43,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자공학기초실험",
+    "professor": "임명식",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "금",
+        "start": "17:00",
+        "end": "17:50",
+        "room": "형남공학관 05313"
+      },
+      {
+        "day": "금",
+        "start": "18:00",
+        "end": "18:50",
+        "room": "형남공학관 05313"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 44,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자공학기초실험",
+    "professor": "임명식",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "12:00",
+        "end": "12:50",
+        "room": "형남공학관 05313"
+      },
+      {
+        "day": "월",
+        "start": "13:00",
+        "end": "13:50",
+        "room": "형남공학관 05313"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 45,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자공학기초실험",
+    "professor": "임명식",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "12:00",
+        "end": "12:50",
+        "room": "형남공학관 05313"
+      },
+      {
+        "day": "화",
+        "start": "13:00",
+        "end": "13:50",
+        "room": "형남공학관 05313"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 46,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "전자기학",
+    "professor": "김철기",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "숭덕경상관 02109"
+      },
+      {
+        "day": "목",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "숭덕경상관 02109"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 47,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "전자기학",
+    "professor": "김철기",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "안익태기념관 04404"
+      },
+      {
+        "day": "목",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "안익태기념관 04404"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 48,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "전자기학",
+    "professor": "안병권",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "미래관 20204 (윤동주강의실"
+      },
+      {
+        "day": "목",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 49,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "전자기학",
+    "professor": "안병권",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "미래관 20204 (윤동주강의실"
+      },
+      {
+        "day": "목",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 50,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-ICT유통물류융합",
+    "name": "회로이론",
+    "professor": "홍민철",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "형남공학관 05105 (심영복강의실"
+      },
+      {
+        "day": "금",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "형남공학관 05105 (심영복강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "ICT유통물류융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 51,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-ICT유통물류융합",
+    "name": "회로이론",
+    "professor": "정원국",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "미래관 20402"
+      },
+      {
+        "day": "목",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "벤처중소기업센터 10311"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "ICT유통물류융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 52,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-ICT유통물류융합",
+    "name": "회로이론",
+    "professor": "정원국",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "미래관 20402"
+      },
+      {
+        "day": "목",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "벤처중소기업센터 10311"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "ICT유통물류융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 53,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-ICT유통물류융합",
+    "name": "회로이론",
+    "professor": "채준완",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "형남공학관 05103 (정용기강의실"
+      },
+      {
+        "day": "금",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "ICT유통물류융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 54,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-ICT유통물류융합",
+    "name": "회로이론",
+    "professor": "김재승",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "형남공학관 05102"
+      },
+      {
+        "day": "목",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "형남공학관 05102"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "ICT유통물류"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 55,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-ICT유통물류융합",
+    "name": "회로이론",
+    "professor": "김재승",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "16:30",
+        "end": "17:45",
+        "room": "형남공학관 05102"
+      },
+      {
+        "day": "수",
+        "start": "16:30",
+        "end": "17:45",
+        "room": "형남공학관 05102"
+      }
+    ],
+    "target": {
+      "grade": "2학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "ICT유통물류"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 56,
+    "category": "교직전공-전자공학",
+    "category_multi": "",
+    "name": "공업교과교육론",
+    "professor": "박기문",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "목",
+        "start": "18:00",
+        "end": "19:15",
+        "room": "미래관 20203"
+      },
+      {
+        "day": "목",
+        "start": "19:30",
+        "end": "20:45",
+        "room": "미래관 20203"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "교직이수자",
+        "전기",
+        "화공",
+        "전자정보\n4학년 교직이수자",
+        "전기",
+        "화공",
+        "전자정보"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 57,
+    "category": "교직전공-전자공학",
+    "category_multi": "",
+    "name": "공업교과논리및논술",
+    "professor": "박기문",
+    "hours": 3.0,
+    "credits": 2.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "18:00",
+        "end": "19:15",
+        "room": "미래관 20203"
+      },
+      {
+        "day": "수",
+        "start": "19:30",
+        "end": "20:45",
+        "room": "미래관 20203"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        ";교직이수자",
+        "전기",
+        "화공",
+        "IT융합전공",
+        "전자공학전공",
+        "정통전\n4학년 ;교직이수자",
+        "전기",
+        "화공",
+        "IT융합전공",
+        "전자공학전공",
+        "정통전"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 58,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-AI로봇융합/융선-ICT유통물류융합/융선-스마트자동차융합/융선-정보보호융합",
+    "name": "데이터통신",
+    "professor": "유명식",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "형남공학관 05105 (심영복강의실"
+      },
+      {
+        "day": "수",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "형남공학관 05105 (심영복강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "정보보호융합",
+        "ICT유통물류융합",
+        "AI로봇융합",
+        "스마트자동차융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 59,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-AI로봇융합/융선-ICT유통물류융합/융선-스마트자동차융합/융선-정보보호융합",
+    "name": "데이터통신",
+    "professor": "유명식",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      },
+      {
+        "day": "수",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "정보보호융합",
+        "ICT유통물류융합",
+        "AI로봇융합",
+        "스마트자동차융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 60,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-AI로봇융합/융선-ICT유통물류융합/융선-스마트자동차융합/융선-정보보호융합",
+    "name": "데이터통신",
+    "professor": "배시영",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "목",
+        "start": "16:30",
+        "end": "17:45",
+        "room": "형남공학관 05104 (김낙경강의실"
+      },
+      {
+        "day": "금",
+        "start": "16:30",
+        "end": "17:45",
+        "room": "형남공학관 05104 (김낙경강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "정보보호융합",
+        "ICT유통물류융합",
+        "AI로봇융합",
+        "스마트자동차융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 61,
+    "category": "전선-전자공학",
+    "category_multi": "",
+    "name": "디스플레이원리",
+    "professor": "강대승",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "문화관 03206"
+      },
+      {
+        "day": "수",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "문화관 03309"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전기",
+        "전자공학전공",
+        "IT융합전공(디스플레이트랙)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 62,
+    "category": "전선-전자공학",
+    "category_multi": "",
+    "name": "디스플레이원리",
+    "professor": "임경문",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "미래관 20401"
+      },
+      {
+        "day": "목",
+        "start": "16:30",
+        "end": "17:45",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전기",
+        "전자공학전공",
+        "IT융합전공(디스플레이트랙)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 63,
+    "category": "전선-전자공학",
+    "category_multi": "",
+    "name": "디스플레이원리",
+    "professor": "임경문",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "미래관 20401"
+      },
+      {
+        "day": "목",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전기",
+        "전자공학전공",
+        "IT융합전공(디스플레이트랙)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 64,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-AI로봇융합/융선-스마트자동차융합",
+    "name": "디지털신호처리",
+    "professor": "임성빈",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "미래관 20204 (윤동주강의실"
+      },
+      {
+        "day": "금",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "AI로봇융합",
+        "스마트자동차융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 65,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-AI로봇융합/융선-스마트자동차융합",
+    "name": "디지털신호처리",
+    "professor": "임성빈",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "미래관 20204 (윤동주강의실"
+      },
+      {
+        "day": "금",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "AI로봇융합",
+        "스마트자동차융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 66,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-AI로봇융합/융선-스마트자동차융합",
+    "name": "디지털신호처리",
+    "professor": "홍민철",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "16:30",
+        "end": "17:45",
+        "room": "형남공학관 05105 (심영복강의실"
+      },
+      {
+        "day": "금",
+        "start": "15:00",
+        "end": "16:15",
+        "room": "형남공학관 05105 (심영복강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "AI로봇융합",
+        "스마트자동차융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 67,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "자료구조및알고리즘",
+    "professor": "고성균",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "목",
+        "start": "09:00",
+        "end": "10:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      },
+      {
+        "day": "금",
+        "start": "09:00",
+        "end": "10:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 68,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "전송및전파",
+    "professor": "홍순기",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "미래관 20204 (윤동주강의실"
+      },
+      {
+        "day": "목",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 69,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학",
+    "name": "전송및전파",
+    "professor": "홍순기",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "미래관 20204 (윤동주강의실"
+      },
+      {
+        "day": "목",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 70,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-ICT유통물류융합",
+    "name": "전자회로",
+    "professor": "박창근",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "09:00",
+        "end": "10:15",
+        "room": "미래관 20204 (윤동주강의실"
+      },
+      {
+        "day": "수",
+        "start": "09:00",
+        "end": "10:15",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "ICT유통물류융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 71,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-ICT유통물류융합",
+    "name": "전자회로",
+    "professor": "박창근",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "미래관 20204 (윤동주강의실"
+      },
+      {
+        "day": "수",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "미래관 20204 (윤동주강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "ICT유통물류융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 72,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-ICT유통물류융합",
+    "name": "전자회로",
+    "professor": "황영하",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "문화관 03312"
+      },
+      {
+        "day": "목",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "문화관 03312"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "ICT유통물류융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 73,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-ICT유통물류융합",
+    "name": "전자회로",
+    "professor": "황영하",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "문화관 03312"
+      },
+      {
+        "day": "목",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "문화관 03312"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "ICT유통물류융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 74,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자회로실험",
+    "professor": "김영탁",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "09:00",
+        "end": "09:50",
+        "room": "형남공학관 05314"
+      },
+      {
+        "day": "월",
+        "start": "10:00",
+        "end": "10:50",
+        "room": "형남공학관 05314"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 75,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자회로실험",
+    "professor": "김영탁",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "12:00",
+        "end": "12:50",
+        "room": "형남공학관 05314"
+      },
+      {
+        "day": "월",
+        "start": "13:00",
+        "end": "13:50",
+        "room": "형남공학관 05314"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 76,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자회로실험",
+    "professor": "김영탁",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "09:00",
+        "end": "09:50",
+        "room": "형남공학관 05314"
+      },
+      {
+        "day": "화",
+        "start": "10:00",
+        "end": "10:50",
+        "room": "형남공학관 05314"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 77,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자회로실험",
+    "professor": "김영탁",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "12:00",
+        "end": "12:50",
+        "room": "형남공학관 05314"
+      },
+      {
+        "day": "화",
+        "start": "13:00",
+        "end": "13:50",
+        "room": "형남공학관 05314"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 78,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자회로실험",
+    "professor": "김영탁",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "09:00",
+        "end": "09:50",
+        "room": "형남공학관 05314"
+      },
+      {
+        "day": "수",
+        "start": "10:00",
+        "end": "10:50",
+        "room": "형남공학관 05314"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 79,
+    "category": "전필-전자공학",
+    "category_multi": "복필-전자공학/부선-전자공학",
+    "name": "전자회로실험",
+    "professor": "김영탁",
+    "hours": 2.0,
+    "credits": 1.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "12:00",
+        "end": "12:50",
+        "room": "형남공학관 05314"
+      },
+      {
+        "day": "수",
+        "start": "13:00",
+        "end": "13:50",
+        "room": "형남공학관 05314"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 80,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-AI로봇융합",
+    "name": "확률및랜덤프로세스",
+    "professor": "이재진",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      },
+      {
+        "day": "금",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "AI로봇융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 81,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-AI로봇융합",
+    "name": "확률및랜덤프로세스",
+    "professor": "이재진",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "수",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "형남공학관 05112 (배명진강의실"
+      },
+      {
+        "day": "금",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "AI로봇융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 82,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-AI로봇융합",
+    "name": "확률및랜덤프로세스",
+    "professor": "이재진",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "16:30",
+        "end": "17:45",
+        "room": "형남공학관 05112 (배명진강의실"
+      },
+      {
+        "day": "수",
+        "start": "16:30",
+        "end": "17:45",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "3학년",
+      "departments": [
+        "전자공학전공(IT융합 수강제한)",
+        "AI로봇융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 83,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-ICT유통물류융합",
+    "name": "SoC구조및설계",
+    "professor": "이성수",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      },
+      {
+        "day": "수",
+        "start": "09:00",
+        "end": "10:15",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "4학년",
+      "departments": [
+        "전자공학전공",
+        "ICT유통물류융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 84,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-AI로봇융합",
+    "name": "디지털통신",
+    "professor": "정동현",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "미래관 20107"
+      },
+      {
+        "day": "목",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "미래관 20107"
+      }
+    ],
+    "target": {
+      "grade": "4학년",
+      "departments": [
+        "전자공학전공",
+        "AI로봇융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 85,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융선-인공지능반도체융합",
+    "name": "마이크로프로세서",
+    "professor": "이기홍",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "화",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "미래관 20204 (윤동주강의실"
+      },
+      {
+        "day": "목",
+        "start": "12:00",
+        "end": "13:15",
+        "room": "미래관 20401"
+      }
+    ],
+    "target": {
+      "grade": "4학년",
+      "departments": [
+        "전자공학전공",
+        "인공지능반도체융합"
+      ]
+    },
+    "has_schedule": true
+  },
+  {
+    "id": 86,
+    "category": "전선-전자공학",
+    "category_multi": "복선-전자공학/부선-전자공학/융필-스마트자동차융합",
+    "name": "자동차전자및반도체",
+    "professor": "이성수",
+    "hours": 3.0,
+    "credits": 3.0,
+    "time_slots": [
+      {
+        "day": "월",
+        "start": "13:30",
+        "end": "14:45",
+        "room": "형남공학관 05112 (배명진강의실"
+      },
+      {
+        "day": "수",
+        "start": "10:30",
+        "end": "11:45",
+        "room": "형남공학관 05112 (배명진강의실"
+      }
+    ],
+    "target": {
+      "grade": "4학년",
+      "departments": [
+        "전자공학전공",
+        "스마트자동차융합"
+      ]
+    },
+    "has_schedule": true
+  }
+]
