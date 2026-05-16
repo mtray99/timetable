@@ -141,10 +141,8 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
 <div class="container">
 <div class="panel-grid">
 
-<!-- ========== 좌측: 설정 패널 ========== -->
 <div class="left-panel">
 
-<!-- 학년/학기 선택 -->
 <div class="card" style="margin-bottom:16px;">
     <h2><span class="icon">📚</span> 학년/학기 선택</h2>
     <div class="form-section">
@@ -167,11 +165,9 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
     </div>
 </div>
 
-<!-- 제약조건 -->
 <div class="card" id="constraintsCard" style="opacity:0.5; pointer-events:none;">
     <h2><span class="icon">⚙️</span> 조건 설정</h2>
 
-    <!-- 공강일 -->
     <div class="form-section">
         <label>📅 공강 요일</label>
         <div class="day-selector" id="daySelector">
@@ -183,7 +179,6 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
         </div>
     </div>
 
-    <!-- 토글 옵션 -->
     <div class="form-section">
         <div class="toggle-row">
             <input type="checkbox" id="chkMorning">
@@ -202,7 +197,6 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
         </div>
     </div>
 
-    <!-- 필수 과목 -->
     <div class="form-section">
         <label>⭐ 필수 수강 과목</label>
         <div class="desc">과목명 입력 후 Enter</div>
@@ -211,7 +205,6 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
         </div>
     </div>
 
-    <!-- 기피 교수 -->
     <div class="form-section">
         <label>🚫 기피 교수</label>
         <div class="tag-input-wrap" id="avoidedWrap">
@@ -219,7 +212,6 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
         </div>
     </div>
 
-    <!-- 선호 교수 -->
     <div class="form-section">
         <label>❤️ 선호 교수</label>
         <div class="tag-input-wrap" id="preferredWrap">
@@ -232,10 +224,7 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
     </button>
 </div>
 
-</div><!-- /left-panel -->
-
-<!-- ========== 우측: 결과 패널 ========== -->
-<div class="right-panel">
+</div><div class="right-panel">
 <div class="card results-area" id="resultsArea">
     <h2><span class="icon">📋</span> 생성 결과</h2>
     <div class="empty-state" id="emptyState">
@@ -253,11 +242,11 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
 </div>
 </div>
 
-</div><!-- /panel-grid -->
-</div>
+</div></div>
 
 <script>
-const API = 'http://localhost:8000';
+// 배포 환경과 로컬 환경에 모두 대응하기 위해 빈 문자열(상대 경로)로 변경했습니다.
+const API = ''; 
 let curriculumData = null;
 let selectedCourses = [];
 let solveResults = [];
@@ -269,262 +258,4 @@ document.getElementById('gradeSemester').addEventListener('change', async functi
     selectedCourses = [];
     if (!gradeSemester) {
         document.getElementById('curriculumList').style.display = 'none';
-        document.getElementById('constraintsCard').style.opacity = '0.5';
-        document.getElementById('constraintsCard').style.pointerEvents = 'none';
-        return;
-    }
-
-    try {
-        const res = await fetch(API + '/api/curriculum');
-        const data = await res.json();
-        curriculumData = data.curriculum[gradeSemester];
-        if (!curriculumData) {
-            alert('해당 학년/학기의 데이터가 없습니다.');
-            return;
-        }
-
-        // 과목 리스트 표시
-        const courseSelector = document.getElementById('courseSelector');
-        courseSelector.innerHTML = '';
-        curriculumData.forEach(course => {
-            const label = document.createElement('label');
-            label.innerHTML = `
-                <input type="checkbox" value="${course.name}" onchange="toggleCourse('${course.name}')">
-                <span>${course.name} (${course.category}) ${course.required ? '[필수]' : ''}</span>
-            `;
-            courseSelector.appendChild(label);
-        });
-
-        document.getElementById('curriculumList').style.display = 'block';
-        document.getElementById('constraintsCard').style.opacity = '1';
-        document.getElementById('constraintsCard').style.pointerEvents = 'auto';
-    } catch (err) {
-        alert('커리큘럼 로드 실패: ' + err.message + '\n서버가 실행되지 않았거나 연결할 수 없습니다. python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload 명령으로 서버를 실행해주세요.');
-    }
-});
-
-function toggleCourse(courseName) {
-    if (selectedCourses.includes(courseName)) {
-        selectedCourses = selectedCourses.filter(c => c !== courseName);
-    } else {
-        selectedCourses.push(courseName);
-    }
-}
-
-// ===== 공강일 선택 =====
-document.querySelectorAll('.day-btn').forEach(btn => {
-    btn.addEventListener('click', () => btn.classList.toggle('selected'));
-});
-
-// ===== 아침수업 토글 =====
-document.getElementById('chkMorning').addEventListener('change', function() {
-    document.getElementById('morningCutoffWrap').style.display = this.checked ? 'block' : 'none';
-});
-document.getElementById('morningCutoff').addEventListener('input', function() {
-    document.getElementById('morningCutoffVal').textContent = this.value + '시';
-});
-
-// ===== 학점 슬라이더 =====
-['minCredits', 'maxCredits', 'targetCredits'].forEach(id => {
-    if (document.getElementById(id)) {
-        document.getElementById(id).addEventListener('input', function() {
-            document.getElementById(id + 'Val').textContent = this.value;
-        });
-    }
-});
-
-// ===== 태그 입력 =====
-function setupTagInput(inputId, wrapId) {
-    const input = document.getElementById(inputId);
-    const wrap = document.getElementById(wrapId);
-    input.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' && this.value.trim()) {
-            e.preventDefault();
-            const tag = document.createElement('span');
-            tag.className = 'tag';
-            tag.innerHTML = `${this.value.trim()}<span class="remove" onclick="this.parentElement.remove()">×</span>`;
-            wrap.insertBefore(tag, this);
-            this.value = '';
-        }
-    });
-}
-setupTagInput('requiredInput', 'requiredWrap');
-setupTagInput('avoidedInput', 'avoidedWrap');
-setupTagInput('preferredInput', 'preferredWrap');
-
-function getTags(wrapId) {
-    return [...document.querySelectorAll(`#${wrapId} .tag`)].map(t => t.textContent.replace('×', '').trim());
-}
-
-// ===== 시간표 생성 =====
-async function generateTimetable() {
-    const btn = document.getElementById('btnGenerate');
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner"></span> 생성 중...';
-
-    const freeDays = [...document.querySelectorAll('.day-btn.selected')].map(b => b.dataset.day);
-    const noMorning = document.getElementById('chkMorning').checked;
-    const cutoff = document.getElementById('morningCutoff').value;
-
-    const body = {
-        grade_semester: document.getElementById('gradeSemester').value,
-        selected_courses: selectedCourses,
-        free_days: freeDays,
-        no_morning: noMorning,
-        morning_cutoff: cutoff + ':00',
-        lunch_break: document.getElementById('chkLunch').checked,
-        preferred_profs: getTags('preferredWrap'),
-        avoided_profs: getTags('avoidedWrap'),
-        timeout: 10,
-        max_results: 5,
-    };
-
-    try {
-        const res = await fetch(API + '/api/solve', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
-        });
-        const data = await res.json();
-        if (!data.success) {
-            alert('시간표 생성 실패: ' + (data.error || '알 수 없는 오류가 발생했습니다.'));
-        } else if (data.count > 0) {
-            solveResults = data.results;
-            currentResultIdx = 0;
-            renderResults();
-        } else {
-            document.getElementById('emptyState').innerHTML = `
-                <div class="emoji">😢</div>
-                <p>조건에 맞는 시간표를 찾지 못했어요.<br>조건을 완화해보세요!</p>`;
-            document.getElementById('emptyState').style.display = 'block';
-            document.getElementById('resultsContent').style.display = 'none';
-        }
-    } catch (err) {
-        alert('오류: ' + err.message);
-    } finally {
-        btn.disabled = false;
-        btn.innerHTML = '🚀 시간표 생성하기';
-    }
-}
-
-// ===== 결과 렌더링 =====
-const COLORS = ['color-0','color-1','color-2','color-3','color-4','color-5','color-6','color-7','color-8','color-9'];
-const DOT_COLORS = ['#3b82f6','#ec4899','#10b981','#f59e0b','#6366f1','#f43f5e','#14b8a6','#a855f7','#f97316','#22c55e'];
-const DAYS = ['월','화','수','목','금'];
-const HOURS = Array.from({length:13}, (_,i) => i + 8); // 8~20
-
-function renderResults() {
-    document.getElementById('emptyState').style.display = 'none';
-    document.getElementById('resultsContent').style.display = 'block';
-
-    // 탭
-    const tabs = document.getElementById('resultTabs');
-    tabs.innerHTML = '';
-    solveResults.forEach((r, i) => {
-        const tab = document.createElement('div');
-        tab.className = 'result-tab' + (i === currentResultIdx ? ' active' : '');
-        tab.innerHTML = `#${i+1} <span class="score">${r.score}점</span> (${r.total_credits}학점)`;
-        tab.onclick = () => { currentResultIdx = i; renderResults(); };
-        tabs.appendChild(tab);
-    });
-
-    const r = solveResults[currentResultIdx];
-
-    // 요약
-    const activeDays = new Set();
-    r.lectures.forEach(l => l.time_slots.forEach(s => activeDays.add(s.day)));
-    const freeDays = DAYS.filter(d => !activeDays.has(d));
-    document.getElementById('resultSummary').innerHTML = `
-        <div class="summary-chip">🏆 점수 <span class="val">${r.score}</span></div>
-        <div class="summary-chip">📚 학점 <span class="val">${r.total_credits}</span></div>
-        <div class="summary-chip">📅 공강 <span class="val">${freeDays.length > 0 ? freeDays.join(', ') : '없음'}</span></div>
-        <div class="summary-chip">📘 과목 <span class="val">${r.lectures.length}개</span></div>
-    `;
-
-    // 시간표 그리기
-    renderTimetableGrid(r);
-
-    // 강의 리스트
-    const list = document.getElementById('lectureList');
-    list.innerHTML = '<h3 style="font-size:14px; font-weight:700; margin-bottom:8px;">📘 과목 목록</h3>';
-    r.lectures.forEach((l, i) => {
-        const timeStr = l.time_slots.map(s => `${s.day} ${s.start}~${s.end}`).join(', ');
-        const room = l.time_slots.length > 0 ? l.time_slots[0].room : '';
-        list.innerHTML += `
-            <div class="lecture-item ${COLORS[i % 10]}">
-                <div class="dot" style="background:${DOT_COLORS[i % 10]}"></div>
-                <div class="details">
-                    <div class="lname">${l.name}</div>
-                    <div class="lmeta">${l.professor || '미정'} · ${l.credits}학점 · ${timeStr}</div>
-                    <div class="lmeta">${room}</div>
-                </div>
-            </div>`;
-    });
-}
-
-function renderTimetableGrid(result) {
-    const table = document.getElementById('timetable');
-
-    // 사용되는 시간 범위 계산
-    let minH = 20, maxH = 8;
-    result.lectures.forEach(l => l.time_slots.forEach(s => {
-        const sh = parseInt(s.start.split(':')[0]);
-        const eh = parseInt(s.end.split(':')[0]);
-        if (sh < minH) minH = sh;
-        if (eh > maxH) maxH = eh;
-    }));
-    minH = Math.max(8, minH);
-    maxH = Math.min(21, maxH + 1);
-
-    // 테이블 생성
-    let html = '<thead><tr><th style="width:56px">시간</th>';
-    DAYS.forEach(d => html += `<th>${d}</th>`);
-    html += '</tr></thead><tbody>';
-
-    const rowsPerHour = 2; // 30분 단위
-    for (let h = minH; h < maxH; h++) {
-        for (let half = 0; half < rowsPerHour; half++) {
-            html += '<tr>';
-            if (half === 0) {
-                html += `<td class="time-col" rowspan="${rowsPerHour}">${String(h).padStart(2,'0')}:00</td>`;
-            }
-            DAYS.forEach(d => {
-                html += `<td data-day="${d}" data-hour="${h}" data-half="${half}"></td>`;
-            });
-            html += '</tr>';
-        }
-    }
-    html += '</tbody>';
-    table.innerHTML = html;
-
-    // 블록 배치
-    result.lectures.forEach((lec, lecIdx) => {
-        lec.time_slots.forEach(slot => {
-            const startMin = parseInt(slot.start.split(':')[0]) * 60 + parseInt(slot.start.split(':')[1]);
-            const endMin = parseInt(slot.end.split(':')[0]) * 60 + parseInt(slot.end.split(':')[1]);
-
-            const startHour = Math.floor(startMin / 60);
-            const startHalf = startMin % 60 >= 30 ? 1 : 0;
-
-            // 셀 찾기
-            const cell = table.querySelector(`td[data-day="${slot.day}"][data-hour="${startHour}"][data-half="${startHalf}"]`);
-            if (!cell) return;
-
-            const rowHeight = 28;
-            const topOffset = (startMin % 30) / 30 * rowHeight;
-            const height = (endMin - startMin) / 30 * rowHeight;
-
-            const block = document.createElement('div');
-            block.className = `class-block ${COLORS[lecIdx % 10]}`;
-            block.style.top = topOffset + 'px';
-            block.style.height = Math.max(height - 2, 16) + 'px';
-            block.innerHTML = `<div class="name">${lec.name}</div><div class="info">${lec.professor || ''}</div>`;
-            block.title = `${lec.name}\n${lec.professor}\n${slot.start}~${slot.end}\n${slot.room}`;
-            cell.style.position = 'relative';
-            cell.appendChild(block);
-        });
-    });
-}
-</script>
-</body>
-</html>
+        document.getElementById('constraintsCard').style.opacity =
