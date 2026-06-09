@@ -1065,10 +1065,13 @@ function exportCurrentResult() {
 const DAYS = ['월','화','수','목','금'];
 
 function getLecCat(lec) {
-  const cat = lec.category || '';
-  const cats = ['전공','교양필수','인간.언어','문화.예술','사회.정치.경제','과학.기술','자기개발.진로탐색'];
-  for (const c of cats) if (cat === c || cat.includes(c)) return c;
-  if (cat.includes('전')) return '전공';
+  const cat = (lec.category || '').trim();
+  const cats = ['전공','교양필수','교양선택','인간.언어','문화.예술','사회.정치.경제','과학.기술','자기개발.진로탐색'];
+  for (const c of cats) {
+    if (cat === c || cat.includes(c)) return c;
+  }
+  if (cat.includes('교양')) return '교양선택';
+  if (cat.includes('전') && !cat.includes('교양')) return '전공';
   return '기타';
 }
 
