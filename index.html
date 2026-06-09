@@ -7,23 +7,21 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --teal: #4DAAAA;
-  --teal-dark: #3a8a8a;
-  --teal-light: #e8f5f5;
-  --teal-mid: #b8e0e0;
-  --bg: #f4f6f9;
+  --teal: #3B9E9E;
+  --teal-dark: #2d7d7d;
+  --teal-light: #edf7f7;
+  --teal-mid: #b2dada;
+  --bg: #f0f2f5;
   --card: #ffffff;
   --text: #1a2332;
-  --text-sub: #5a6474;
+  --text-sub: #52606e;
   --text-muted: #9ba3ae;
-  --border: #e8eaed;
-  --border-focus: #4DAAAA;
-  --radius: 14px;
-  --radius-sm: 8px;
-  --shadow: 0 2px 12px rgba(0,0,0,0.07);
-  --shadow-md: 0 4px 24px rgba(0,0,0,0.10);
-
-  /* 카테고리 색상 */
+  --border: #e4e7eb;
+  --border-focus: #3B9E9E;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 1px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
   --major-bg: #eef2ff; --major-border: #6366f1; --major-text: #3730a3;
   --req-bg: #fef3c7; --req-border: #f59e0b; --req-text: #78350f;
   --human-bg: #fce7f3; --human-border: #ec4899; --human-text: #831843;
@@ -33,46 +31,98 @@
   --self-bg: #ffedd5; --self-border: #f97316; --self-text: #7c2d12;
 }
 
-body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+body {
+  font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
 
 /* ─── 헤더 ─── */
 .header {
-  background: linear-gradient(135deg, #2d8a8a 0%, #4DAAAA 60%, #5ec4c0 100%);
-  color: white; padding: 20px 32px;
-  display: flex; align-items: center; justify-content: space-between;
-  box-shadow: 0 4px 20px rgba(45,138,138,0.25);
+  background: #1e3a3a;
+  color: white;
+  padding: 0 32px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
 }
-.header-left h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
-.header-left p { opacity: 0.8; font-size: 12px; margin-top: 2px; }
-.header-badge { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.35); border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 600; }
+.header-left { display: flex; align-items: center; gap: 12px; }
+.header-logo { font-size: 20px; font-weight: 900; letter-spacing: -1px; color: #5ec4c0; }
+.header-title { font-size: 14px; font-weight: 600; opacity: 0.85; }
+.header-badge {
+  background: rgba(94,196,192,0.18);
+  border: 1px solid rgba(94,196,192,0.35);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #5ec4c0;
+  letter-spacing: 0.5px;
+}
 
 /* ─── 레이아웃 ─── */
 .container { max-width: 1440px; margin: 0 auto; padding: 24px; }
-.layout { display: grid; grid-template-columns: 400px 1fr; gap: 20px; align-items: start; }
+.layout { display: grid; grid-template-columns: 390px 1fr; gap: 20px; align-items: start; }
 
 /* ─── 카드 ─── */
-.card { background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
-.card + .card { margin-top: 16px; }
-.card-title { font-size: 15px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; color: var(--text); }
-.card-title .icon { font-size: 18px; }
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.card + .card { margin-top: 14px; }
+.card-title {
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+.card-title .icon { font-size: 16px; }
 
 /* ─── 학년/학기 선택 ─── */
-.semester-select {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
-}
+.semester-select { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
 .sem-btn {
-  padding: 8px 4px; border: 2px solid var(--border); background: white; border-radius: var(--radius-sm);
-  font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; color: var(--text-sub); text-align: center;
+  padding: 9px 4px;
+  border: 1.5px solid var(--border);
+  background: white;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--text-sub);
+  text-align: center;
+  line-height: 1.3;
 }
-.sem-btn:hover { border-color: var(--teal); color: var(--teal); }
+.sem-btn:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
 .sem-btn.active { background: var(--teal); border-color: var(--teal); color: white; }
 
-/* ─── 과목 선택 영역 ─── */
-.course-selector-wrap { margin-top: 16px; }
-.category-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+/* ─── 과목 선택 ─── */
+.course-selector-wrap { margin-top: 14px; }
+.category-tabs { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
 .cat-tab {
-  padding: 5px 12px; border-radius: 20px; border: 1.5px solid var(--border);
-  font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; background: white; color: var(--text-sub);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: white;
+  color: var(--text-sub);
   white-space: nowrap;
 }
 .cat-tab:hover { border-color: var(--teal); color: var(--teal); }
@@ -86,32 +136,54 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
 .cat-tab.active.cat-science { background: var(--science-border); }
 .cat-tab.active.cat-self { background: var(--self-border); }
 
-/* 카운트 뱃지 */
 .cat-count {
   display: inline-flex; align-items: center; justify-content: center;
   background: rgba(255,255,255,0.3); border-radius: 10px;
-  padding: 0 6px; font-size: 11px; margin-left: 4px; min-width: 18px; height: 16px;
+  padding: 0 5px; font-size: 10px; margin-left: 3px; min-width: 16px; height: 14px;
 }
 .cat-tab:not(.active) .cat-count { background: var(--bg); color: var(--text-muted); }
 
-.course-list { max-height: 300px; overflow-y: auto; }
-.course-list::-webkit-scrollbar { width: 4px; }
+/* 과목 검색 */
+.course-search-wrap {
+  position: relative;
+  margin-bottom: 8px;
+}
+.course-search-wrap input {
+  width: 100%;
+  padding: 7px 10px 7px 30px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  outline: none;
+  background: #fafbfc;
+  transition: border-color 0.15s;
+}
+.course-search-wrap input:focus { border-color: var(--teal); background: white; }
+.course-search-wrap .search-icon {
+  position: absolute;
+  left: 9px; top: 50%; transform: translateY(-50%);
+  font-size: 13px; color: var(--text-muted);
+  pointer-events: none;
+}
+
+.course-list { max-height: 280px; overflow-y: auto; }
+.course-list::-webkit-scrollbar { width: 3px; }
 .course-list::-webkit-scrollbar-track { background: transparent; }
 .course-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
 .course-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 9px 10px; border-radius: var(--radius-sm); cursor: pointer;
-  transition: background 0.12s; border: 1px solid transparent; margin-bottom: 3px;
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 10px; border-radius: 8px; cursor: pointer;
+  transition: background 0.10s; border: 1px solid transparent; margin-bottom: 2px;
 }
 .course-item:hover { background: var(--teal-light); }
 .course-item.checked { background: var(--teal-light); border-color: var(--teal-mid); }
-.course-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--teal); flex-shrink: 0; cursor: pointer; }
+.course-item input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--teal); flex-shrink: 0; cursor: pointer; }
 .course-item-info { flex: 1; min-width: 0; }
 .course-name { font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.course-meta { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.course-meta { font-size: 10px; color: var(--text-muted); margin-top: 1px; }
 .course-badge {
-  font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px;
+  font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 8px;
   flex-shrink: 0; border: 1px solid;
 }
 .badge-major { background: var(--major-bg); color: var(--major-text); border-color: var(--major-border); }
@@ -123,108 +195,190 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
 .badge-과학기술 { background: var(--science-bg); color: var(--science-text); border-color: var(--science-border); }
 .badge-자기개발 { background: var(--self-bg); color: var(--self-text); border-color: var(--self-border); }
 
-/* 선택된 과목 선택 요약 */
 .selected-summary {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 8px 12px; background: var(--teal-light); border-radius: var(--radius-sm);
-  margin-bottom: 10px; border: 1px solid var(--teal-mid);
+  padding: 7px 11px; background: var(--teal-light); border-radius: 8px;
+  margin-bottom: 8px; border: 1px solid var(--teal-mid);
 }
-.selected-summary span { font-size: 13px; font-weight: 600; color: var(--teal-dark); }
+.selected-summary span { font-size: 12px; font-weight: 700; color: var(--teal-dark); }
 .btn-select-all, .btn-clear-all {
-  font-size: 11px; color: var(--teal); background: none; border: none; cursor: pointer; font-weight: 600;
-  padding: 2px 6px; border-radius: 4px;
+  font-size: 11px; color: var(--teal); background: none; border: none; cursor: pointer; font-weight: 700;
+  padding: 2px 7px; border-radius: 5px;
 }
 .btn-select-all:hover, .btn-clear-all:hover { background: var(--teal-mid); }
 
 /* ─── 조건 카드 ─── */
-.section-label { font-size: 12px; font-weight: 700; color: var(--text-sub); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-
-/* 공강일 */
-.day-selector { display: flex; gap: 6px; }
-.day-btn {
-  flex: 1; height: 40px; border-radius: var(--radius-sm); border: 2px solid var(--border);
-  background: white; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.15s; color: var(--text-sub);
+.section-label {
+  font-size: 11px; font-weight: 800; color: var(--text-muted);
+  margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;
 }
-.day-btn.selected { background: var(--teal); color: white; border-color: var(--teal); }
+
+.day-selector { display: flex; gap: 5px; }
+.day-btn {
+  flex: 1; height: 38px; border-radius: 8px; border: 1.5px solid var(--border);
+  background: white; font-size: 14px; font-weight: 800; cursor: pointer; transition: all 0.15s; color: var(--text-sub);
+}
+.day-btn.selected { background: #1e3a3a; color: white; border-color: #1e3a3a; }
 .day-btn:hover:not(.selected) { border-color: var(--teal); color: var(--teal); }
 
-/* 토글 */
-.toggle-group { display: flex; flex-direction: column; gap: 8px; }
-.toggle-row { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: #fafbfc; cursor: pointer; }
+.toggle-group { display: flex; flex-direction: column; gap: 6px; }
+.toggle-row {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border);
+  background: #fafbfc; cursor: pointer;
+}
 .toggle-row:hover { background: var(--teal-light); border-color: var(--teal-mid); }
-.toggle-row input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--teal); cursor: pointer; }
+.toggle-row input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--teal); cursor: pointer; }
 .toggle-row span { font-size: 13px; font-weight: 500; }
-.morning-sub { padding: 8px 10px 8px 36px; background: var(--teal-light); border-radius: var(--radius-sm); margin-top: -4px; display: none; }
-.morning-sub label { font-size: 11px; color: var(--text-sub); display: block; margin-bottom: 4px; }
+
+.morning-sub {
+  padding: 8px 10px 8px 34px;
+  background: var(--teal-light);
+  border-radius: 8px;
+  margin-top: -2px;
+  display: none;
+  border: 1px solid var(--teal-mid);
+}
+.morning-sub label { font-size: 11px; color: var(--text-sub); display: block; margin-bottom: 4px; font-weight: 600; }
 .range-wrap { display: flex; align-items: center; gap: 10px; }
 .range-wrap input[type="range"] { flex: 1; accent-color: var(--teal); }
-.range-val { font-size: 13px; font-weight: 700; color: var(--teal); min-width: 30px; }
+.range-val { font-size: 13px; font-weight: 800; color: var(--teal); min-width: 30px; }
 
 /* 태그 입력 */
-.tag-input-area { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 6px 8px; min-height: 40px; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; background: white; }
-.tag-input-area:focus-within { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(77,170,170,0.12); }
-.tag { background: var(--teal-light); color: var(--teal-dark); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; border: 1px solid var(--teal-mid); display: inline-flex; align-items: center; gap: 4px; }
-.tag .rm { cursor: pointer; font-size: 12px; line-height: 1; opacity: 0.6; }
+.tag-input-area {
+  border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 5px 7px; min-height: 38px;
+  display: flex; flex-wrap: wrap; gap: 4px; align-items: center; background: white;
+}
+.tag-input-area:focus-within { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(59,158,158,0.12); }
+.tag {
+  background: var(--teal-light); color: var(--teal-dark); font-size: 11px; font-weight: 700;
+  padding: 3px 8px; border-radius: 20px; border: 1px solid var(--teal-mid);
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.tag .rm { cursor: pointer; font-size: 13px; line-height: 1; opacity: 0.55; }
 .tag .rm:hover { opacity: 1; }
 .autocomplete-wrap { position: relative; flex: 1; min-width: 80px; }
 .autocomplete-wrap input { border: none; outline: none; font-size: 12px; width: 100%; background: transparent; padding: 2px 0; }
-.ac-list { position: absolute; z-index: 100; left: 0; right: 0; top: calc(100% + 6px); background: white; border: 1px solid var(--border); border-radius: 10px; box-shadow: var(--shadow-md); max-height: 200px; overflow-y: auto; }
-.ac-item { padding: 8px 12px; font-size: 13px; cursor: pointer; color: var(--text); }
+.ac-list {
+  position: absolute; z-index: 100; left: 0; right: 0; top: calc(100% + 6px);
+  background: white; border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: var(--shadow-md); max-height: 180px; overflow-y: auto;
+}
+.ac-item { padding: 8px 12px; font-size: 12px; cursor: pointer; color: var(--text); }
 .ac-item:hover { background: var(--teal-light); color: var(--teal-dark); }
 
 /* 생성 버튼 */
 .btn-gen {
-  width: 100%; padding: 13px; border: none; border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, var(--teal) 0%, #5ec4c0 100%);
-  color: white; font-size: 15px; font-weight: 700; cursor: pointer;
+  width: 100%; padding: 13px; border: none; border-radius: 10px;
+  background: #1e3a3a;
+  color: white; font-size: 14px; font-weight: 800; cursor: pointer;
   transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+  letter-spacing: 0.3px;
 }
-.btn-gen:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(77,170,170,0.4); }
-.btn-gen:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
-.spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.35); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; }
+.btn-gen:hover { background: #16302f; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,58,58,0.35); }
+.btn-gen:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+.spinner { width: 15px; height: 15px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ─── 결과 패널 ─── */
-.results-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; }
+.results-card {
+  background: var(--card); border-radius: var(--radius);
+  box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden;
+  min-height: 500px;
+}
 .empty-state { padding: 80px 20px; text-align: center; color: var(--text-muted); }
-.empty-state .big-icon { font-size: 56px; margin-bottom: 12px; }
-.empty-state p { font-size: 14px; line-height: 1.7; }
+.empty-state .big-icon { font-size: 52px; margin-bottom: 12px; }
+.empty-state p { font-size: 14px; line-height: 1.8; }
+.empty-state .hint-steps {
+  margin-top: 20px; display: inline-flex; flex-direction: column; gap: 6px; text-align: left;
+}
+.hint-steps .step {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--text-sub);
+}
+.step-num {
+  width: 20px; height: 20px; background: var(--teal); color: white;
+  border-radius: 50%; font-size: 10px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
 
 /* 결과 탭 */
 .result-header { padding: 16px 20px 0; border-bottom: 1px solid var(--border); }
-.result-header h2 { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
-.result-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 0; }
+.result-header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.result-header-top h2 { font-size: 14px; font-weight: 800; color: var(--text); }
+.btn-export {
+  padding: 5px 12px; border-radius: 6px; border: 1.5px solid var(--border);
+  font-size: 11px; font-weight: 700; cursor: pointer; background: white;
+  color: var(--text-sub); transition: all 0.15s; display: flex; align-items: center; gap: 4px;
+}
+.btn-export:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
+
+.result-tabs { display: flex; gap: 5px; overflow-x: auto; padding-bottom: 0; }
 .result-tabs::-webkit-scrollbar { display: none; }
 .res-tab {
-  padding: 7px 14px; border-radius: 8px 8px 0 0; border: 1.5px solid var(--border); border-bottom: none;
-  background: var(--bg); cursor: pointer; font-size: 12px; font-weight: 600; color: var(--text-sub);
+  padding: 7px 13px; border-radius: 8px 8px 0 0;
+  border: 1.5px solid var(--border); border-bottom: none;
+  background: var(--bg); cursor: pointer; font-size: 12px; font-weight: 700; color: var(--text-sub);
   white-space: nowrap; transition: all 0.15s; margin-bottom: -1px;
 }
 .res-tab.active { background: white; color: var(--teal); border-color: var(--teal); }
-.res-tab .sc { font-weight: 800; }
+.res-tab .sc { font-weight: 900; }
 
-/* 요약 칩 */
+/* 요약 */
 .result-body { padding: 16px 20px; }
-.summary-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-.sum-chip { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 6px 12px; font-size: 12px; font-weight: 600; color: var(--text-sub); }
-.sum-chip strong { color: var(--teal); font-size: 15px; }
+.summary-bar { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 14px; }
+.sum-chip {
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  padding: 6px 11px; font-size: 12px; font-weight: 600; color: var(--text-sub);
+}
+.sum-chip strong { color: var(--teal); font-size: 14px; }
+.sum-chip.free-day { background: #fff7ed; border-color: #fed7aa; color: #c2410c; }
+.sum-chip.free-day strong { color: #c2410c; }
+
+/* 키워드 */
+.comment-box {
+  background: #f5fbfb; border: 1px solid #c9e8e8;
+  border-radius: 10px; padding: 10px 14px; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.comment-box .kw-label { font-size: 11px; font-weight: 800; color: var(--teal-dark); white-space: nowrap; }
+.keyword-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+.kw-chip {
+  background: white; border: 1px solid var(--teal-mid);
+  border-radius: 6px; padding: 3px 9px; font-size: 11px; font-weight: 700;
+  color: var(--teal-dark);
+}
 
 /* 시간표 */
-.timetable-wrap { overflow-x: auto; }
+.timetable-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
 .timetable { width: 100%; border-collapse: collapse; table-layout: fixed; min-width: 520px; }
-.timetable th { background: var(--teal-light); padding: 8px 4px; font-size: 12px; font-weight: 700; color: var(--teal-dark); text-align: center; border: 1px solid var(--teal-mid); }
-.timetable td { border: 1px solid #f0f2f5; height: 26px; vertical-align: top; position: relative; padding: 0; background: white; }
-.timetable .time-col { width: 50px; font-size: 10px; color: var(--text-muted); text-align: right; padding: 0 6px 0 0; background: #fafbfc; font-weight: 600; border-right: 2px solid var(--border); }
+.timetable th {
+  background: #1e3a3a; padding: 9px 4px;
+  font-size: 12px; font-weight: 800; color: rgba(255,255,255,0.85);
+  text-align: center; border: 1px solid #2a4e4e;
+}
+.timetable td {
+  border: 1px solid #f0f2f5; height: 26px; vertical-align: top;
+  position: relative; padding: 0; background: white;
+}
+.timetable .time-col {
+  width: 46px; font-size: 10px; color: var(--text-muted); text-align: right;
+  padding: 0 6px 0 0; background: #f8f9fa; font-weight: 700;
+  border-right: 2px solid #e8eaed;
+}
 
 .class-block {
   position: absolute; left: 2px; right: 2px; border-radius: 5px;
-  padding: 3px 5px; font-size: 10px; overflow: hidden; cursor: default; z-index: 1;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 3px 5px; font-size: 10px; overflow: hidden; cursor: pointer; z-index: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  transition: filter 0.15s, transform 0.1s;
 }
-.class-block .cb-name { font-weight: 700; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.class-block .cb-prof { opacity: 0.75; font-size: 9px; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.class-block:hover { filter: brightness(0.93); transform: scaleX(1.01); z-index: 5; }
+.class-block .cb-name { font-weight: 800; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.class-block .cb-prof { opacity: 0.7; font-size: 9px; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.class-block .cb-room { opacity: 0.6; font-size: 9px; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* 블록 색상 - 카테고리별 */
 .cb-major   { background: #eef2ff; border-left: 3px solid #6366f1; color: #3730a3; }
 .cb-req     { background: #fef9c3; border-left: 3px solid #eab308; color: #713f12; }
 .cb-human   { background: #fce7f3; border-left: 3px solid #ec4899; color: #831843; }
@@ -235,50 +389,70 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
 .cb-etc     { background: #f1f5f9; border-left: 3px solid #64748b; color: #334155; }
 
 /* 강의 목록 */
-.lec-list-wrap { margin-top: 16px; }
-.lec-list-title { font-size: 13px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
-.comment-box { background: #f8fcfb; border: 1px solid #d7edea; border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 16px; color: var(--text-sub); }
-.comment-box .comment-title { font-size: 13px; font-weight: 700; color: var(--teal-dark); margin-bottom: 8px; }
-.comment-box .comment-text { font-size: 13px; line-height: 1.7; }
-.comment-box .comment-bullets { margin-top: 10px; padding-left: 18px; color: var(--text-sub); }
-.comment-box .comment-bullets li { margin-bottom: 4px; }
-.lec-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 6px; }
+.lec-list-wrap { margin-top: 14px; }
+.lec-list-title { font-size: 12px; font-weight: 800; margin-bottom: 8px; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px; }
+.lec-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 6px; }
 .lec-item {
   display: flex; align-items: flex-start; gap: 8px;
-  padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: white;
+  padding: 9px 10px; border-radius: 10px; border: 1px solid var(--border); background: white;
+  transition: border-color 0.12s, box-shadow 0.12s;
 }
+.lec-item:hover { border-color: var(--teal-mid); box-shadow: 0 2px 8px rgba(59,158,158,0.10); }
 .lec-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
 .lec-info .ln { font-size: 12px; font-weight: 700; color: var(--text); }
-.lec-info .lm { font-size: 10px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
-.lec-badge { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 8px; border: 1px solid; margin-top: 3px; display: inline-block; }
+.lec-info .lm { font-size: 10px; color: var(--text-muted); margin-top: 2px; line-height: 1.5; }
+.lec-badge { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 6px; border: 1px solid; margin-top: 4px; display: inline-block; }
+
+/* 토스트 알림 */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: #1e3a3a; color: white; padding: 10px 20px; border-radius: 10px;
+  font-size: 13px; font-weight: 600; z-index: 9999; opacity: 0;
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.error { background: #b91c1c; }
+.toast.success { background: var(--teal-dark); }
+
+/* 로딩 오버레이 */
+.loading-overlay {
+  position: absolute; inset: 0; background: rgba(255,255,255,0.85);
+  display: none; align-items: center; justify-content: center;
+  border-radius: var(--radius); z-index: 50; flex-direction: column; gap: 12px;
+}
+.loading-overlay.show { display: flex; }
+.loading-text { font-size: 13px; font-weight: 600; color: var(--teal-dark); }
+.results-card-wrap { position: relative; }
 
 /* ─── 반응형 ─── */
 @media (max-width: 960px) {
   .layout { grid-template-columns: 1fr; }
-  .header h1 { font-size: 18px; }
-  .header-badge { display: none; }
+  .header { padding: 0 16px; }
+  .header-title { display: none; }
+  .container { padding: 14px; }
 }
 
-/* 비활성 오버레이 */
-.disabled-overlay { opacity: 0.45; pointer-events: none; }
-
-/* 구분선 */
-.divider { height: 1px; background: var(--border); margin: 14px 0; }
-
-/* 섹션 갭 */
-.form-group { margin-bottom: 14px; }
+.disabled-overlay { opacity: 0.4; pointer-events: none; }
+.divider { height: 1px; background: var(--border); margin: 12px 0; }
+.form-group { margin-bottom: 12px; }
 .form-group:last-child { margin-bottom: 0; }
 
-/* 공지 */
-.notice-box { background: var(--teal-light); border: 1px solid var(--teal-mid); border-radius: var(--radius-sm); padding: 8px 12px; font-size: 12px; color: var(--teal-dark); margin-bottom: 12px; line-height: 1.5; }
+.notice-box {
+  background: #fffbeb; border: 1px solid #fde68a;
+  border-radius: 8px; padding: 8px 11px; font-size: 11px;
+  color: #92400e; margin-bottom: 10px; line-height: 1.5;
+  display: flex; align-items: flex-start; gap: 6px;
+}
 </style>
 </head>
 <body>
 
 <div class="header">
   <div class="header-left">
-    <h1>🎓 SSU 시간표 생성기</h1>
-    <p>과목 선택 → 조건 설정 → 최적 시간표 자동 생성</p>
+    <span class="header-logo">SSU</span>
+    <span class="header-title">시간표 생성기</span>
   </div>
   <div class="header-badge">Soongsil Univ.</div>
 </div>
@@ -293,14 +467,14 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
   <div class="card">
     <div class="card-title"><span class="icon">📅</span> 학년 / 학기</div>
     <div class="semester-select" id="semesterGrid">
-      <button class="sem-btn" data-val="1-1">1학년 1학기</button>
-      <button class="sem-btn" data-val="1-2">1학년 2학기</button>
-      <button class="sem-btn" data-val="2-1">2학년 1학기</button>
-      <button class="sem-btn" data-val="2-2">2학년 2학기</button>
-      <button class="sem-btn" data-val="3-1">3학년 1학기</button>
-      <button class="sem-btn" data-val="3-2">3학년 2학기</button>
-      <button class="sem-btn" data-val="4-1">4학년 1학기</button>
-      <button class="sem-btn" data-val="4-2">4학년 2학기</button>
+      <button class="sem-btn" data-val="1-1">1학년<br>1학기</button>
+      <button class="sem-btn" data-val="1-2">1학년<br>2학기</button>
+      <button class="sem-btn" data-val="2-1">2학년<br>1학기</button>
+      <button class="sem-btn" data-val="2-2">2학년<br>2학기</button>
+      <button class="sem-btn" data-val="3-1">3학년<br>1학기</button>
+      <button class="sem-btn" data-val="3-2">3학년<br>2학기</button>
+      <button class="sem-btn" data-val="4-1">4학년<br>1학기</button>
+      <button class="sem-btn" data-val="4-2">4학년<br>2학기</button>
     </div>
 
     <!-- 과목 선택 -->
@@ -308,7 +482,6 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
       <div class="divider"></div>
       <div class="card-title" style="margin-bottom:10px;"><span class="icon">📚</span> 수강 과목 선택</div>
 
-      <!-- 카테고리 탭 -->
       <div class="category-tabs" id="catTabs">
         <button class="cat-tab active cat-all" data-cat="all">전체 <span class="cat-count" id="cnt-all">0</span></button>
         <button class="cat-tab cat-major" data-cat="전공">전공 <span class="cat-count" id="cnt-major">0</span></button>
@@ -320,7 +493,12 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
         <button class="cat-tab cat-self" data-cat="자기개발.진로탐색">자기개발·진로 <span class="cat-count" id="cnt-self">0</span></button>
       </div>
 
-      <!-- 선택 요약 -->
+      <!-- 과목 검색 -->
+      <div class="course-search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="courseSearchInput" placeholder="과목명 검색..." autocomplete="off">
+      </div>
+
       <div class="selected-summary">
         <span id="selectedCount">0개 선택됨</span>
         <div style="display:flex;gap:4px;">
@@ -329,7 +507,6 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
         </div>
       </div>
 
-      <!-- 과목 목록 -->
       <div class="course-list" id="courseList"></div>
     </div>
   </div>
@@ -352,7 +529,7 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
 
     <div class="divider"></div>
 
-    <!-- 토글 옵션 -->
+    <!-- 시간 조건 -->
     <div class="form-group">
       <div class="section-label">시간 조건</div>
       <div class="toggle-group">
@@ -361,7 +538,7 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
           <span>🌅 아침 수업 제외</span>
         </label>
         <div class="morning-sub" id="morningCutoffWrap">
-          <label>기준 시간</label>
+          <label>기준 시간 (이 시간 이전 수업 제외)</label>
           <div class="range-wrap">
             <input type="range" id="morningCutoff" min="8" max="12" value="10" step="1">
             <span class="range-val" id="morningCutoffVal">10시</span>
@@ -369,22 +546,22 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
         </div>
         <label class="toggle-row">
           <input type="checkbox" id="chkLunch">
-          <span>🍱 점심시간 확보 (11:30~13:00)</span>
+          <span>🍱 점심시간 확보 (11:30–13:00)</span>
         </label>
       </div>
     </div>
 
     <div class="divider"></div>
 
-    <!-- 교수 설정 -->
+    <!-- 교수 선호 -->
     <div class="form-group">
       <div class="section-label">교수 선호 설정</div>
       <div style="margin-bottom:10px;">
-        <div class="section-label" style="font-size:11px; margin-bottom:5px;">❤️ 선호 교수</div>
+        <div class="section-label" style="font-size:10px; margin-bottom:5px;">❤️ 선호 교수</div>
         <div class="tag-input-area" id="preferredWrap">
           <div class="autocomplete-wrap">
-            <input type="text" id="preferredInput" placeholder="교수명 입력...">
-            <div class="ac-list" id="acListPreferred" style="display:none;"></div>
+            <input type="text" id="preferredInput" placeholder="교수명 입력..." autocomplete="off" maxlength="30">
+            <div class="ac-list" id="acListPreferred" style="display:none;" role="listbox" aria-label="선호 교수 목록"></div>
           </div>
         </div>
       </div>
@@ -394,11 +571,11 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
         </label>
       </div>
       <div>
-        <div class="section-label" style="font-size:11px; margin-bottom:5px;">🚫 기피 교수</div>
+        <div class="section-label" style="font-size:10px; margin-bottom:5px;">🚫 기피 교수</div>
         <div class="tag-input-area" id="avoidedWrap">
           <div class="autocomplete-wrap">
-            <input type="text" id="avoidedInput" placeholder="교수명 입력...">
-            <div class="ac-list" id="acListAvoided" style="display:none;"></div>
+            <input type="text" id="avoidedInput" placeholder="교수명 입력..." autocomplete="off" maxlength="30">
+            <div class="ac-list" id="acListAvoided" style="display:none;" role="listbox" aria-label="기피 교수 목록"></div>
           </div>
         </div>
       </div>
@@ -407,7 +584,7 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
     <div class="divider"></div>
 
     <button class="btn-gen" id="btnGenerate" onclick="generateTimetable()">
-      <span>🚀</span> 시간표 생성하기
+      <span>✨</span> 최적 시간표 생성
     </button>
   </div>
 
@@ -415,27 +592,42 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
 
 <!-- ========== 우측 패널 ========== -->
 <div class="right-col">
-  <div class="results-card" id="resultsCard">
-    <div class="empty-state" id="emptyState">
-      <div class="big-icon">🗓️</div>
-      <p>학년/학기를 선택하고<br>수강 과목을 골라주세요</p>
+  <div class="results-card-wrap">
+    <div class="results-card" id="resultsCard">
+      <div class="empty-state" id="emptyState">
+        <div class="big-icon">🗓️</div>
+        <p>원하는 시간표를 자동으로 만들어드려요</p>
+        <div class="hint-steps">
+          <div class="step"><span class="step-num">1</span> 학년·학기 선택</div>
+          <div class="step"><span class="step-num">2</span> 수강할 과목 선택</div>
+          <div class="step"><span class="step-num">3</span> 공강·시간 조건 설정</div>
+          <div class="step"><span class="step-num">4</span> 최적 시간표 생성 클릭</div>
+        </div>
+      </div>
+      <div id="resultsContent" style="display:none;">
+        <div class="result-header">
+          <div class="result-header-top">
+            <h2>📋 생성된 시간표</h2>
+            <button class="btn-export" onclick="exportCurrentResult()">📋 복사</button>
+          </div>
+          <div class="result-tabs" id="resultTabs"></div>
+        </div>
+        <div class="result-body">
+          <div class="summary-bar" id="summaryBar"></div>
+          <div class="comment-box" id="resultComment"></div>
+          <div class="timetable-wrap">
+            <table class="timetable" id="timetable"></table>
+          </div>
+          <div class="lec-list-wrap">
+            <div class="lec-list-title">과목 목록</div>
+            <div class="lec-items" id="lecItems"></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="resultsContent" style="display:none;">
-      <div class="result-header">
-        <h2>📋 생성된 시간표</h2>
-        <div class="result-tabs" id="resultTabs"></div>
-      </div>
-      <div class="result-body">
-        <div class="summary-bar" id="summaryBar"></div>
-        <div class="comment-box" id="resultComment"></div>
-        <div class="timetable-wrap">
-          <table class="timetable" id="timetable"></table>
-        </div>
-        <div class="lec-list-wrap">
-          <div class="lec-list-title">과목 목록</div>
-          <div class="lec-items" id="lecItems"></div>
-        </div>
-      </div>
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="spinner" style="width:32px;height:32px;border-width:3px;border-color:rgba(59,158,158,0.2);border-top-color:var(--teal);"></div>
+      <div class="loading-text">최적 시간표 탐색 중...</div>
     </div>
   </div>
 </div>
@@ -443,30 +635,46 @@ body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; bac
 </div><!-- /layout -->
 </div>
 
+<!-- 토스트 -->
+<div class="toast" id="toast"></div>
+
 <script>
-const API = '';
+// ─── 보안: API 베이스 URL은 상대경로 사용 (XSS 방지용 입력은 textContent로 처리) ───
+const API = 'http://127.0.0.1:8000';
+
 let curriculumData = [];
 let allCourses = [];
 let selectedCourses = new Set();
 let activeCat = 'all';
+let courseSearchQuery = '';
 let preferredProfs = [];
 let avoidedProfs = [];
 let solveResults = [];
 let currentIdx = 0;
 window.ALL_PROFESSORS = [];
 
-// ──────────────────────────────────────────
-//  카테고리 정규화
-// ──────────────────────────────────────────
+// ─── 토스트 알림 ───
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; // XSS 방지: innerHTML 대신 textContent 사용
+  t.className = 'toast' + (type ? ' ' + type : '');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ─── 카테고리 정규화 ───
 function normalizeCat(course) {
   const dt = course.dataset_type || course.category || '';
   const sc = course.source_category || '';
-  // Curriculum 과목들(전필, 전선) 또는 전공 과목 모두 "전공"으로 표시
   if (dt === '전공' || sc.includes('전') || sc.includes('교직전공') || dt === '전필' || dt === '전선') return '전공';
   if (dt === '교양필수') return '교양필수';
-  const mapSc = { '인간.언어': '인간.언어', '문화.예술': '문화.예술', '사회.정치.경제': '사회.정치.경제', '과학.기술': '과학.기술', '자기개발.진로탐색': '자기개발.진로탐색' };
+  const mapSc = {
+    '인간.언어': '인간.언어', '문화.예술': '문화.예술',
+    '사회.정치.경제': '사회.정치.경제', '과학.기술': '과학.기술',
+    '자기개발.진로탐색': '자기개발.진로탐색'
+  };
   if (mapSc[sc]) return mapSc[sc];
-  if (dt === '교양선택') return '인간.언어'; // fallback
+  if (dt === '교양선택') return '인간.언어';
   return '기타';
 }
 
@@ -491,9 +699,7 @@ const DOT_COLORS = {
   '과학.기술': '#10b981', '자기개발.진로탐색': '#f97316', '기타': '#64748b'
 };
 
-// ──────────────────────────────────────────
-//  학년/학기 선택
-// ──────────────────────────────────────────
+// ─── 학년/학기 선택 ───
 document.querySelectorAll('.sem-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.sem-btn').forEach(b => b.classList.remove('active'));
@@ -504,44 +710,49 @@ document.querySelectorAll('.sem-btn').forEach(btn => {
 
 async function loadCurriculum(gs) {
   selectedCourses.clear();
+  courseSearchQuery = '';
+  document.getElementById('courseSearchInput').value = '';
   try {
     const res = await fetch(API + '/api/curriculum');
+    if (!res.ok) throw new Error(`서버 오류 (${res.status})`);
     const data = await res.json();
     const raw = data.curriculum[gs] || [];
-
-    // 과목 고유화 (이름 기준)
     const seen = new Set();
     allCourses = [];
     raw.forEach(c => {
       if (!seen.has(c.name)) {
         seen.add(c.name);
-        // source_category가 없으면 sections에서 우선 섹션의 source_category를 사용하고, 없으면 섹션의 category로 폴백
         if (!c.source_category && c.sections && c.sections.length > 0) {
           c.source_category = c.sections[0].source_category || c.sections[0].category || '';
         }
         allCourses.push(c);
       }
     });
-
     updateCatCounts();
     renderCourseList();
     document.getElementById('courseArea').style.display = 'block';
     document.getElementById('constraintsCard').classList.remove('disabled-overlay');
   } catch(e) {
-    alert('커리큘럼 로드 실패: ' + e.message + '\n서버가 실행 중인지 확인해주세요.');
+    showToast('커리큘럼 로드 실패: ' + e.message, 'error');
   }
 }
 
-// ──────────────────────────────────────────
-//  카테고리 탭
-// ──────────────────────────────────────────
+// ─── 카테고리 탭 ───
 document.querySelectorAll('.cat-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     activeCat = tab.dataset.cat;
+    courseSearchQuery = '';
+    document.getElementById('courseSearchInput').value = '';
     renderCourseList();
   });
+});
+
+// ─── 과목 검색 ───
+document.getElementById('courseSearchInput').addEventListener('input', function() {
+  courseSearchQuery = this.value.trim();
+  renderCourseList();
 });
 
 function updateCatCounts() {
@@ -562,8 +773,21 @@ function updateCatCounts() {
 
 function renderCourseList() {
   const list = document.getElementById('courseList');
-  const filtered = activeCat === 'all' ? allCourses : allCourses.filter(c => normalizeCat(c) === activeCat);
+  let filtered = activeCat === 'all' ? allCourses : allCourses.filter(c => normalizeCat(c) === activeCat);
+  if (courseSearchQuery) {
+    const q = courseSearchQuery.toLowerCase();
+    filtered = filtered.filter(c => c.name.toLowerCase().includes(q));
+  }
   list.innerHTML = '';
+
+  if (filtered.length === 0) {
+    const empty = document.createElement('div');
+    empty.style.cssText = 'text-align:center;padding:20px 0;font-size:12px;color:var(--text-muted);';
+    empty.textContent = courseSearchQuery ? '검색 결과가 없습니다.' : '이 분류에 과목이 없습니다.';
+    list.appendChild(empty);
+    return;
+  }
+
   filtered.forEach(c => {
     const cat = normalizeCat(c);
     const checked = selectedCourses.has(c.name);
@@ -573,18 +797,41 @@ function renderCourseList() {
     const div = document.createElement('div');
     div.className = 'course-item' + (checked ? ' checked' : '');
     div.dataset.name = c.name;
-    div.innerHTML = `
-      <input type="checkbox" ${checked ? 'checked' : ''} id="chk-${CSS.escape(c.name)}">
-      <div class="course-item-info">
-        <div class="course-name" title="${c.name}">${c.name}</div>
-        <div class="course-meta">${c.section_count || 0}개 분반 · ${c.sections && c.sections[0] ? (c.sections[0].credits || '-') : '-'}학점</div>
-      </div>
-      <span class="course-badge ${badgeClass}">${displayCat}</span>
-    `;
+
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = checked;
+    cb.id = 'chk-' + c.name.replace(/[^a-zA-Z0-9가-힣]/g, '_');
+    cb.setAttribute('aria-label', c.name);
+
+    const info = document.createElement('div');
+    info.className = 'course-item-info';
+
+    const nameEl = document.createElement('div');
+    nameEl.className = 'course-name';
+    nameEl.title = c.name;
+    nameEl.textContent = c.name; // XSS 방지
+
+    const metaEl = document.createElement('div');
+    metaEl.className = 'course-meta';
+    const credits = c.sections && c.sections[0] ? (c.sections[0].credits || '-') : '-';
+    metaEl.textContent = `${c.section_count || 0}개 분반 · ${credits}학점`;
+
+    info.appendChild(nameEl);
+    info.appendChild(metaEl);
+
+    const badge = document.createElement('span');
+    badge.className = 'course-badge ' + badgeClass;
+    badge.textContent = displayCat;
+
+    div.appendChild(cb);
+    div.appendChild(info);
+    div.appendChild(badge);
+
     div.addEventListener('click', (e) => {
-      if (e.target.type !== 'checkbox') div.querySelector('input').click();
+      if (e.target !== cb) cb.click();
     });
-    div.querySelector('input').addEventListener('change', function() {
+    cb.addEventListener('change', function() {
       if (this.checked) { selectedCourses.add(c.name); div.classList.add('checked'); }
       else { selectedCourses.delete(c.name); div.classList.remove('checked'); }
       updateSelectedCount();
@@ -616,16 +863,12 @@ function clearAll() {
   renderCourseList();
 }
 
-// ──────────────────────────────────────────
-//  공강일
-// ──────────────────────────────────────────
+// ─── 공강일 ───
 document.querySelectorAll('.day-btn').forEach(btn => {
   btn.addEventListener('click', () => btn.classList.toggle('selected'));
 });
 
-// ──────────────────────────────────────────
-//  아침 수업 토글
-// ──────────────────────────────────────────
+// ─── 아침 수업 토글 ───
 document.getElementById('chkMorning').addEventListener('change', function() {
   document.getElementById('morningCutoffWrap').style.display = this.checked ? 'block' : 'none';
 });
@@ -633,20 +876,14 @@ document.getElementById('morningCutoff').addEventListener('input', function() {
   document.getElementById('morningCutoffVal').textContent = this.value + '시';
 });
 
-// ──────────────────────────────────────────
-//  교수 자동완성
-// ──────────────────────────────────────────
+// ─── 교수 자동완성 ───
 async function loadProfessors() {
-  const eps = [API + '/api/professors', 'http://127.0.0.1:8000/api/professors'];
-  for (const ep of eps) {
-    try {
-      const res = await fetch(ep, { cache: 'no-store' });
-      if (!res.ok) continue;
-      const data = await res.json();
-      window.ALL_PROFESSORS = data.professors || [];
-      return;
-    } catch(e) {}
-  }
+  try {
+    const res = await fetch(API + '/api/professors', { cache: 'no-store' });
+    if (!res.ok) return;
+    const data = await res.json();
+    window.ALL_PROFESSORS = (data.professors || []).filter(p => typeof p === 'string' && p.length < 50);
+  } catch(e) {}
 }
 loadProfessors();
 
@@ -656,24 +893,45 @@ function setupProf(inputId, listId, wrapId, arr) {
   const wrap = document.getElementById(wrapId);
 
   function render(q) {
-    const filtered = (q ? window.ALL_PROFESSORS.filter(p => p.toLowerCase().includes(q.toLowerCase())) : window.ALL_PROFESSORS).filter(p => !arr.includes(p)).slice(0, 100);
+    const filtered = (q
+      ? window.ALL_PROFESSORS.filter(p => p.toLowerCase().includes(q.toLowerCase()))
+      : window.ALL_PROFESSORS
+    ).filter(p => !arr.includes(p)).slice(0, 50);
+
     if (!filtered.length) { list.style.display = 'none'; return; }
-    list.innerHTML = filtered.map(p => `<div class="ac-item">${p}</div>`).join('');
-    list.style.display = 'block';
-    list.querySelectorAll('.ac-item').forEach(item => {
-      item.addEventListener('click', () => addProf(item.textContent, inputId, listId, wrapId, arr));
+    list.innerHTML = '';
+    filtered.forEach(p => {
+      const item = document.createElement('div');
+      item.className = 'ac-item';
+      item.setAttribute('role', 'option');
+      item.textContent = p; // XSS 방지
+      item.addEventListener('click', () => addProf(p, inputId, listId, wrapId, arr));
+      list.appendChild(item);
     });
+    list.style.display = 'block';
   }
 
   input.addEventListener('input', () => render(input.value));
   input.addEventListener('focus', () => render(input.value));
   input.addEventListener('keydown', e => {
-    if (e.key === 'Enter' && input.value.trim()) { addProf(input.value.trim(), inputId, listId, wrapId, arr); }
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const val = input.value.trim();
+      // 자동완성 목록에서 첫 번째 항목이 있으면 그걸 쓰고, 없으면 직접 입력값 사용
+      const first = list.querySelector('.ac-item');
+      if (first && list.style.display !== 'none') {
+        addProf(first.textContent, inputId, listId, wrapId, arr);
+      } else if (val) {
+        addProf(val, inputId, listId, wrapId, arr);
+      }
+    }
+    if (e.key === 'Escape') list.style.display = 'none';
   });
 }
 
 function addProf(name, inputId, listId, wrapId, arr) {
   if (!name || arr.includes(name)) return;
+  if (name.length > 50) { showToast('교수명이 너무 깁니다.', 'error'); return; }
   arr.push(name);
   const input = document.getElementById(inputId);
   const list = document.getElementById(listId);
@@ -681,11 +939,21 @@ function addProf(name, inputId, listId, wrapId, arr) {
   const tag = document.createElement('span');
   tag.className = 'tag';
   tag.dataset.name = name;
-  tag.innerHTML = `${name}<span class="rm">×</span>`;
-  tag.querySelector('.rm').addEventListener('click', () => {
-    const idx = arr.indexOf(name); if (idx > -1) arr.splice(idx, 1);
+
+  const nameSpan = document.createElement('span');
+  nameSpan.textContent = name; // XSS 방지
+  const rm = document.createElement('span');
+  rm.className = 'rm';
+  rm.textContent = '×';
+  rm.setAttribute('aria-label', name + ' 제거');
+  rm.addEventListener('click', () => {
+    const idx = arr.indexOf(name);
+    if (idx > -1) arr.splice(idx, 1);
     tag.remove();
   });
+
+  tag.appendChild(nameSpan);
+  tag.appendChild(rm);
   wrap.insertBefore(tag, wrap.querySelector('.autocomplete-wrap'));
   input.value = '';
   list.style.display = 'none';
@@ -700,59 +968,107 @@ document.addEventListener('click', e => {
   }
 });
 
-// ──────────────────────────────────────────
-//  시간표 생성
-// ──────────────────────────────────────────
+// ─── 시간표 생성 ───
 async function generateTimetable() {
-  if (selectedCourses.size === 0) { alert('수강할 과목을 최소 1개 선택해주세요.'); return; }
-  const btn = document.getElementById('btnGenerate');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> 생성 중...';
-
+  if (selectedCourses.size === 0) {
+    showToast('수강할 과목을 최소 1개 선택해주세요.', 'error');
+    return;
+  }
   const gs = document.querySelector('.sem-btn.active')?.dataset.val || '';
+  if (!gs) {
+    showToast('학년/학기를 먼저 선택해주세요.', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('btnGenerate');
+  const overlay = document.getElementById('loadingOverlay');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> 탐색 중...';
+  overlay.classList.add('show');
+
   const freeDays = [...document.querySelectorAll('.day-btn.selected')].map(b => b.dataset.day);
   const noMorning = document.getElementById('chkMorning').checked;
-  const cutoff = document.getElementById('morningCutoff').value;
+  const cutoff = parseInt(document.getElementById('morningCutoff').value, 10);
+
+  // 입력 유효성 검사
+  if (cutoff < 8 || cutoff > 12) {
+    showToast('기준 시간 값이 올바르지 않습니다.', 'error');
+    btn.disabled = false;
+    btn.innerHTML = '<span>✨</span> 최적 시간표 생성';
+    overlay.classList.remove('show');
+    return;
+  }
 
   try {
+    const payload = {
+      grade_semester: gs,
+      selected_courses: [...selectedCourses].slice(0, 50), // 최대 50개 제한
+      free_days: freeDays.filter(d => ['월','화','수','목','금'].includes(d)),
+      no_morning: noMorning,
+      morning_cutoff: cutoff + ':00',
+      lunch_break: document.getElementById('chkLunch').checked,
+      preferred_profs: preferredProfs.slice(0, 10),
+      force_preferred: document.getElementById('forcePreferred').checked,
+      avoided_profs: avoidedProfs.slice(0, 10),
+      timeout: 10,
+      max_results: 5
+    };
+
     const res = await fetch(API + '/api/solve', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        grade_semester: gs,
-        selected_courses: [...selectedCourses],
-        free_days: freeDays,
-        no_morning: noMorning,
-        morning_cutoff: cutoff + ':00',
-        lunch_break: document.getElementById('chkLunch').checked,
-        preferred_profs: preferredProfs,
-        force_preferred: document.getElementById('forcePreferred').checked,
-        avoided_profs: avoidedProfs,
-        timeout: 10, max_results: 5
-      })
+      body: JSON.stringify(payload)
     });
+    if (!res.ok) throw new Error(`서버 오류 (${res.status})`);
     const data = await res.json();
-    if (!data.success) { alert('생성 실패: ' + (data.error || '알 수 없는 오류')); }
-    else if (data.count > 0) { solveResults = data.results; currentIdx = 0; renderResults(); }
-    else {
-      document.getElementById('emptyState').innerHTML = `<div class="big-icon">😢</div><p>조건에 맞는 시간표를 찾지 못했어요.<br>조건을 완화해보세요!</p>`;
+
+    if (!data.success) {
+      showToast('생성 실패: ' + (data.error || '알 수 없는 오류'), 'error');
+    } else if (data.count > 0) {
+      solveResults = data.results;
+      currentIdx = 0;
+      renderResults();
+      showToast(`${data.count}개의 시간표를 찾았습니다!`, 'success');
+    } else {
+      document.getElementById('emptyState').innerHTML = `
+        <div class="big-icon">😢</div>
+        <p>조건에 맞는 시간표를 찾지 못했어요.</p>
+        <p style="margin-top:8px;font-size:12px;">공강 요일을 줄이거나 시간 조건을 완화해보세요.</p>
+      `;
       document.getElementById('emptyState').style.display = 'block';
       document.getElementById('resultsContent').style.display = 'none';
     }
-  } catch(e) { alert('오류: ' + e.message); }
-  finally { btn.disabled = false; btn.innerHTML = '<span>🚀</span> 시간표 생성하기'; }
+  } catch(e) {
+    showToast('오류: ' + e.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<span>✨</span> 최적 시간표 생성';
+    overlay.classList.remove('show');
+  }
 }
 
-// ──────────────────────────────────────────
-//  결과 렌더링
-// ──────────────────────────────────────────
+// ─── 결과 내보내기 ───
+function exportCurrentResult() {
+  if (!solveResults.length) return;
+  const r = solveResults[currentIdx];
+  const lines = ['시간표 #' + (currentIdx + 1) + ' (' + r.total_credits + '학점, ' + r.score + '점)'];
+  r.lectures.forEach(l => {
+    const times = l.time_slots.map(s => `${s.day} ${s.start}~${s.end}`).join(', ');
+    lines.push(`${l.name} | ${l.professor || '미정'} | ${l.credits}학점 | ${times}`);
+  });
+  navigator.clipboard.writeText(lines.join('\n'))
+    .then(() => showToast('클립보드에 복사되었습니다.', 'success'))
+    .catch(() => showToast('복사 실패. 직접 선택해주세요.', 'error'));
+}
+
+// ─── 결과 렌더링 ───
 const DAYS = ['월','화','수','목','금'];
 
 function getLecCat(lec) {
   const cat = lec.category || '';
-  const cats = ['전공', '교양필수', '인간.언어', '문화.예술', '사회.정치.경제', '과학.기술', '자기개발.진로탐색'];
-  for (const c of cats) if (cat.includes(c.replace('.','.')) || cat === c) return c;
-  if (cat.includes('전') && cat.includes('전자')) return '전공';
+  const cats = ['전공','교양필수','인간.언어','문화.예술','사회.정치.경제','과학.기술','자기개발.진로탐색'];
+  for (const c of cats) if (cat === c || cat.includes(c)) return c;
+  if (cat.includes('전')) return '전공';
   return '기타';
 }
 
@@ -760,14 +1076,20 @@ function renderResults() {
   document.getElementById('emptyState').style.display = 'none';
   document.getElementById('resultsContent').style.display = 'block';
 
-  // 탭
   const tabs = document.getElementById('resultTabs');
   tabs.innerHTML = '';
   solveResults.forEach((r, i) => {
     const t = document.createElement('div');
     t.className = 'res-tab' + (i === currentIdx ? ' active' : '');
-    t.innerHTML = `#${i+1} <span class="sc">${r.score}점</span> · ${r.total_credits}학점`;
-    t.onclick = () => { currentIdx = i; renderResults(); };
+    const label = document.createTextNode(`#${i+1} `);
+    const sc = document.createElement('span');
+    sc.className = 'sc';
+    sc.textContent = r.score + '점';
+    const rest = document.createTextNode(` · ${r.total_credits}학점`);
+    t.appendChild(label);
+    t.appendChild(sc);
+    t.appendChild(rest);
+    t.addEventListener('click', () => { currentIdx = i; renderResults(); });
     tabs.appendChild(t);
   });
 
@@ -775,75 +1097,85 @@ function renderResults() {
   const activeDays = new Set(r.lectures.flatMap(l => l.time_slots.map(s => s.day)));
   const freeDays = DAYS.filter(d => !activeDays.has(d));
 
-  document.getElementById('summaryBar').innerHTML = `
-    <div class="sum-chip">🏆 <strong>${r.score}</strong>점</div>
-    <div class="sum-chip">📚 <strong>${r.total_credits}</strong>학점</div>
-    <div class="sum-chip">🏖️ 공강 <strong>${freeDays.length ? freeDays.join(', ') : '없음'}</strong></div>
-    <div class="sum-chip">📘 <strong>${r.lectures.length}</strong>과목</div>
-  `;
-  document.getElementById('resultComment').innerHTML = getScheduleComment(r, freeDays);
+  // 요약 칩 (textContent 사용)
+  const summaryBar = document.getElementById('summaryBar');
+  summaryBar.innerHTML = '';
+  const chips = [
+    { label: '점수', value: r.score + '점' },
+    { label: '학점', value: r.total_credits + '학점' },
+    { label: '과목', value: r.lectures.length + '개' },
+    { label: '공강', value: freeDays.length ? freeDays.join(', ') : '없음', cls: freeDays.length ? 'free-day' : '' },
+  ];
+  chips.forEach(chip => {
+    const el = document.createElement('div');
+    el.className = 'sum-chip' + (chip.cls ? ' ' + chip.cls : '');
+    el.textContent = chip.label + ' ';
+    const strong = document.createElement('strong');
+    strong.textContent = chip.value;
+    el.appendChild(strong);
+    summaryBar.appendChild(el);
+  });
 
+  renderComment(r, freeDays);
   renderGrid(r);
   renderLecList(r);
 }
 
-function getScheduleComment(r, freeDays) {
+function renderComment(r, freeDays) {
   const slots = r.lectures.flatMap(l => l.time_slots);
   const morningCount = slots.filter(s => {
-    const [h,m] = s.start.split(':').map(Number);
+    const [h, m] = s.start.split(':').map(Number);
     return h * 60 + m < 600;
   }).length;
+
   const daySlots = DAYS.map(d => slots.filter(s => s.day === d));
-  const gaps = daySlots.flatMap(slots => {
-    if (slots.length <= 1) return [];
-    const sorted = slots.slice().sort((a,b) => {
-      const at = a.start.split(':').map(Number); const bt = b.start.split(':').map(Number);
+  const gaps = daySlots.flatMap(ds => {
+    if (ds.length <= 1) return [];
+    const sorted = ds.slice().sort((a, b) => {
+      const at = a.start.split(':').map(Number);
+      const bt = b.start.split(':').map(Number);
       return at[0]*60+at[1] - (bt[0]*60+bt[1]);
     });
     const dayGaps = [];
-    for (let i=1; i<sorted.length; i++) {
-      const prevEnd = sorted[i-1].end.split(':').map(Number);
-      const start = sorted[i].start.split(':').map(Number);
-      const prevMin = prevEnd[0]*60 + prevEnd[1];
-      const curMin = start[0]*60 + start[1];
-      const gap = curMin - prevMin;
+    for (let i = 1; i < sorted.length; i++) {
+      const [pe, pm] = sorted[i-1].end.split(':').map(Number);
+      const [sh, sm] = sorted[i].start.split(':').map(Number);
+      const gap = (sh*60+sm) - (pe*60+pm);
       if (gap > 0) dayGaps.push(gap);
     }
     return dayGaps;
   });
-  const avgGap = gaps.length ? Math.round(gaps.reduce((a,b)=>a+b,0)/gaps.length) : 0;
+  const avgGap = gaps.length ? Math.round(gaps.reduce((a,b)=>a+b,0)/gaps.length) : 9999;
 
-  const lines = [];
-  lines.push('이 시간표는 AI 최적화를 통해 공강, 학점, 수업 집중도, 아침 시간대, 교실 이동을 함께 고려하여 생성되었습니다.');
-  if (freeDays.length) lines.push(`특히 ${freeDays.join(', ')}요일에 공강이 있어 주중 여유를 확보할 수 있습니다.`);
-  else lines.push('공강은 없지만 하루에 몰아서 집중하는 형태로 수업 일정을 구성했습니다.');
-  if (morningCount === 0) lines.push('아침 수업이 없으므로 느긋하게 하루를 시작할 수 있습니다.');
-  else if (morningCount <= 1) lines.push('아침 수업이 적어 무리 없이 출발할 수 있습니다.');
-  if (avgGap > 30) lines.push('수업 사이 평균 휴식 시간이 충분해서 이동과 점심을 준비하기 좋습니다.');
-  else if (avgGap > 0) lines.push('수업 사이 빈 시간이 적어 한 번 나가면 효율적으로 수업을 이어갈 수 있습니다.');
-  lines.push('연강일에는 가능한 한 강의실 간 이동 거리를 짧게 유지하도록 구성했습니다.');
+  const keywords = [];
+  if (freeDays.length) keywords.push('공강 ' + freeDays.join('·'));
+  if (avgGap <= 15) keywords.push('빈시간 적음');
+  else if (avgGap >= 60) keywords.push('여유 충분');
+  if (morningCount === 0) keywords.push('오전수업 없음');
+  else if (morningCount === 1) keywords.push('오전수업 1개');
+  if (r.score >= 85) keywords.push('최우수');
+  else if (r.score >= 70) keywords.push('균형 구성');
+  keywords.push('이동 최적화');
 
-  const strong = r.score >= 85 ? '우수한 구성입니다.' : r.score >= 70 ? '균형 잡힌 구성입니다.' : '조건을 조금만 조정하면 더 나은 시간표를 만들 수 있습니다.';
-  lines.push(strong);
-
-  return `
-    <div class="comment-title">시간표 추천 이유</div>
-    <div class="comment-text">${lines[0]}</div>
-    <ul class="comment-bullets">
-      ${lines.slice(1).map(line => `<li>${line}</li>`).join('')}
-    </ul>
-  `;
+  const box = document.getElementById('resultComment');
+  box.innerHTML = '';
+  const label = document.createElement('span');
+  label.className = 'kw-label';
+  label.textContent = '추천 이유';
+  box.appendChild(label);
+  const wrap = document.createElement('div');
+  wrap.className = 'keyword-wrap';
+  keywords.forEach(kw => {
+    const chip = document.createElement('span');
+    chip.className = 'kw-chip';
+    chip.textContent = kw;
+    wrap.appendChild(chip);
+  });
+  box.appendChild(wrap);
 }
 
 function renderGrid(r) {
-  let minH = 20, maxH = 8;
-  r.lectures.forEach(l => l.time_slots.forEach(s => {
-    const sh = parseInt(s.start); const eh = Math.ceil(parseInt(s.end.split(':')[0]) + parseInt(s.end.split(':')[1])/60);
-    if (parseInt(s.start) < minH) minH = parseInt(s.start);
-    if (eh > maxH) maxH = eh;
-  }));
-  // 정확히 계산
-  minH = 24; maxH = 0;
+  let minH = 24, maxH = 0;
   r.lectures.forEach(l => l.time_slots.forEach(s => {
     const sh = parseInt(s.start.split(':')[0]);
     const eh = parseInt(s.end.split(':')[0]) + (parseInt(s.end.split(':')[1]) > 0 ? 1 : 0);
@@ -852,21 +1184,45 @@ function renderGrid(r) {
   }));
   minH = Math.max(8, minH); maxH = Math.min(22, maxH);
 
-  let html = '<thead><tr><th style="width:50px">시간</th>';
-  DAYS.forEach(d => html += `<th>${d}</th>`);
-  html += '</tr></thead><tbody>';
+  const tbl = document.getElementById('timetable');
+  tbl.innerHTML = '';
 
+  const thead = document.createElement('thead');
+  const headerRow = document.createElement('tr');
+  const timeTh = document.createElement('th');
+  timeTh.style.width = '46px';
+  timeTh.textContent = '';
+  headerRow.appendChild(timeTh);
+  DAYS.forEach(d => {
+    const th = document.createElement('th');
+    th.textContent = d;
+    headerRow.appendChild(th);
+  });
+  thead.appendChild(headerRow);
+  tbl.appendChild(thead);
+
+  const tbody = document.createElement('tbody');
   for (let h = minH; h < maxH; h++) {
     for (let half = 0; half < 2; half++) {
-      html += '<tr>';
-      if (half === 0) html += `<td class="time-col" rowspan="2">${String(h).padStart(2,'0')}:00</td>`;
-      DAYS.forEach(d => html += `<td data-day="${d}" data-h="${h}" data-hf="${half}"></td>`);
-      html += '</tr>';
+      const tr = document.createElement('tr');
+      if (half === 0) {
+        const timeTd = document.createElement('td');
+        timeTd.className = 'time-col';
+        timeTd.rowSpan = 2;
+        timeTd.textContent = String(h).padStart(2,'0') + ':00';
+        tr.appendChild(timeTd);
+      }
+      DAYS.forEach(d => {
+        const td = document.createElement('td');
+        td.dataset.day = d;
+        td.dataset.h = h;
+        td.dataset.hf = half;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
     }
   }
-  html += '</tbody>';
-  document.getElementById('timetable').innerHTML = html;
-  const tbl = document.getElementById('timetable');
+  tbl.appendChild(tbody);
 
   r.lectures.forEach(lec => {
     const cat = getLecCat(lec);
@@ -883,8 +1239,25 @@ function renderGrid(r) {
       const block = document.createElement('div');
       block.className = `class-block ${cbCls}`;
       block.style.cssText = `top:${topOff}px; height:${Math.max(height-2,14)}px;`;
-      block.innerHTML = `<div class="cb-name">${lec.name}</div><div class="cb-prof">${lec.professor||''}</div>`;
-      block.title = `${lec.name}\n${lec.professor||''}\n${slot.start}~${slot.end}\n${slot.room||''}`;
+
+      const nameDiv = document.createElement('div');
+      nameDiv.className = 'cb-name';
+      nameDiv.textContent = lec.name;
+
+      const profDiv = document.createElement('div');
+      profDiv.className = 'cb-prof';
+      profDiv.textContent = lec.professor || '';
+
+      const roomDiv = document.createElement('div');
+      roomDiv.className = 'cb-room';
+      roomDiv.textContent = slot.room || '';
+
+      block.appendChild(nameDiv);
+      block.appendChild(profDiv);
+      if (slot.room) block.appendChild(roomDiv);
+
+      // 툴팁 대신 title (XSS 방지: textContent로 조합)
+      block.title = [lec.name, lec.professor || '', `${slot.start}~${slot.end}`, slot.room || ''].filter(Boolean).join('\n');
       cell.style.position = 'relative';
       cell.appendChild(block);
     });
@@ -900,16 +1273,44 @@ function renderLecList(r) {
     const room = lec.time_slots[0]?.room || '';
     const item = document.createElement('div');
     item.className = 'lec-item';
-    item.innerHTML = `
-      <div class="lec-dot" style="background:${DOT_COLORS[cat]||'#64748b'}"></div>
-      <div class="lec-info">
-        <div class="ln">${lec.name}</div>
-        <div class="lm">${lec.professor||'미정'} · ${lec.credits}학점</div>
-        <div class="lm">${timeStr}</div>
-        ${room ? `<div class="lm">${room}</div>` : ''}
-        <span class="lec-badge ${CAT_BADGE_CLASS[cat]||''}">${CAT_LABEL[cat]||cat}</span>
-      </div>
-    `;
+
+    const dot = document.createElement('div');
+    dot.className = 'lec-dot';
+    dot.style.background = DOT_COLORS[cat] || '#64748b';
+
+    const info = document.createElement('div');
+    info.className = 'lec-info';
+
+    const ln = document.createElement('div');
+    ln.className = 'ln';
+    ln.textContent = lec.name;
+
+    const lm1 = document.createElement('div');
+    lm1.className = 'lm';
+    lm1.textContent = (lec.professor || '미정') + ' · ' + lec.credits + '학점';
+
+    const lm2 = document.createElement('div');
+    lm2.className = 'lm';
+    lm2.textContent = timeStr;
+
+    info.appendChild(ln);
+    info.appendChild(lm1);
+    info.appendChild(lm2);
+
+    if (room) {
+      const lm3 = document.createElement('div');
+      lm3.className = 'lm';
+      lm3.textContent = room;
+      info.appendChild(lm3);
+    }
+
+    const badge = document.createElement('span');
+    badge.className = 'lec-badge ' + (CAT_BADGE_CLASS[cat] || '');
+    badge.textContent = CAT_LABEL[cat] || cat;
+    info.appendChild(badge);
+
+    item.appendChild(dot);
+    item.appendChild(info);
     wrap.appendChild(item);
   });
 }
