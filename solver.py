@@ -152,9 +152,7 @@ def score_schedule(schedule, constraints):
                 total_gap += gap
     score += max(0, 25 - (total_gap / 300) * 25)
 
-    # 목표 학점 근접 (최대 20점)
-    target = constraints.get('target_credits', 18)
-    score += max(0, 20 - abs(total_credits - target) * 4)
+    # 목표 학점 근접 스코어링 제거 (사용자 요청)
 
     # 아침 수업 적을수록 (최대 15점)
     morning_count = sum(1 for s in all_slots if time_to_min(s['start']) < 600)
@@ -260,7 +258,7 @@ def solve_timetable(course_groups, constraints, max_results=5):
                         'professor': l.get('professor', ''),
                         'credits': l['credits'], 'hours': l.get('hours'),
                         'time_slots': l['time_slots'],
-                        'category': l.get('category', '')
+                        'category': l.get('source_category') or l.get('dataset_type') or ''
                     } for l in chosen],
                     'total_credits': total_credits,
                     'score': sc
