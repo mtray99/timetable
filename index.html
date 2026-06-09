@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSU 시간표 생성기</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --teal: #4DAAAA;
+  --teal-dark: #3a8a8a;
+  --teal-light: #e8f5f5;
+  --teal-mid: #b8e0e0;
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #1a2332;
+  --text-sub: #5a6474;
+  --text-muted: #9ba3ae;
+  --border: #e8eaed;
+  --border-focus: #4DAAAA;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.07);
+  --shadow-md: 0 4px 24px rgba(0,0,0,0.10);
+
+  /* 카테고리 색상 */
+  --major-bg: #eef2ff; --major-border: #6366f1; --major-text: #3730a3;
+  --req-bg: #fef3c7; --req-border: #f59e0b; --req-text: #78350f;
+  --human-bg: #fce7f3; --human-border: #ec4899; --human-text: #831843;
+  --culture-bg: #fae8ff; --culture-border: #a855f7; --culture-text: #581c87;
+  --social-bg: #dbeafe; --social-border: #3b82f6; --social-text: #1e3a8a;
+  --science-bg: #d1fae5; --science-border: #10b981; --science-text: #064e3b;
+  --self-bg: #ffedd5; --self-border: #f97316; --self-text: #7c2d12;
+}
+
+body { font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+/* ─── 헤더 ─── */
+.header {
+  background: linear-gradient(135deg, #2d8a8a 0%, #4DAAAA 60%, #5ec4c0 100%);
+  color: white; padding: 20px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(45,138,138,0.25);
+}
+.header-left h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+.header-left p { opacity: 0.8; font-size: 12px; margin-top: 2px; }
+.header-badge { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.35); border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 600; }
+
+/* ─── 레이아웃 ─── */
+.container { max-width: 1440px; margin: 0 auto; padding: 24px; }
+.layout { display: grid; grid-template-columns: 400px 1fr; gap: 20px; align-items: start; }
+
+/* ─── 카드 ─── */
+.card { background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+.card + .card { margin-top: 16px; }
+.card-title { font-size: 15px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; color: var(--text); }
+.card-title .icon { font-size: 18px; }
+
+/* ─── 학년/학기 선택 ─── */
+.semester-select {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
+}
+.sem-btn {
+  padding: 8px 4px; border: 2px solid var(--border); background: white; border-radius: var(--radius-sm);
+  font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; color: var(--text-sub); text-align: center;
+}
+.sem-btn:hover { border-color: var(--teal); color: var(--teal); }
+.sem-btn.active { background: var(--teal); border-color: var(--teal); color: white; }
+
+/* ─── 과목 선택 영역 ─── */
+.course-selector-wrap { margin-top: 16px; }
+.category-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.cat-tab {
+  padding: 5px 12px; border-radius: 20px; border: 1.5px solid var(--border);
+  font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; background: white; color: var(--text-sub);
+  white-space: nowrap;
+}
+.cat-tab:hover { border-color: var(--teal); color: var(--teal); }
+.cat-tab.active { color: white; border-color: transparent; }
+.cat-tab.active.cat-all { background: var(--teal); }
+.cat-tab.active.cat-major { background: var(--major-border); }
+.cat-tab.active.cat-req { background: var(--req-border); }
+.cat-tab.active.cat-human { background: var(--human-border); }
+.cat-tab.active.cat-culture { background: var(--culture-border); }
+.cat-tab.active.cat-social { background: var(--social-border); }
+.cat-tab.active.cat-science { background: var(--science-border); }
+.cat-tab.active.cat-self { background: var(--self-border); }
+
+/* 카운트 뱃지 */
+.cat-count {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.3); border-radius: 10px;
+  padding: 0 6px; font-size: 11px; margin-left: 4px; min-width: 18px; height: 16px;
+}
+.cat-tab:not(.active) .cat-count { background: var(--bg); color: var(--text-muted); }
+
+.course-list { max-height: 300px; overflow-y: auto; }
+.course-list::-webkit-scrollbar { width: 4px; }
+.course-list::-webkit-scrollbar-track { background: transparent; }
+.course-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.course-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 10px; border-radius: var(--radius-sm); cursor: pointer;
+  transition: background 0.12s; border: 1px solid transparent; margin-bottom: 3px;
+}
+.course-item:hover { background: var(--teal-light); }
+.course-item.checked { background: var(--teal-light); border-color: var(--teal-mid); }
+.course-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--teal); flex-shrink: 0; cursor: pointer; }
+.course-item-info { flex: 1; min-width: 0; }
+.course-name { font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.course-meta { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.course-badge {
+  font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px;
+  flex-shrink: 0; border: 1px solid;
+}
+.badge-major { background: var(--major-bg); color: var(--major-text); border-color: var(--major-border); }
+.badge-교양필수 { background: var(--req-bg); color: var(--req-text); border-color: var(--req-border); }
+.badge-교양선택 { background: #e0f2fe; color: #0369a1; border-color: #0ea5e9; }
+.badge-인간언어 { background: var(--human-bg); color: var(--human-text); border-color: var(--human-border); }
+.badge-문화예술 { background: var(--culture-bg); color: var(--culture-text); border-color: var(--culture-border); }
+.badge-사회정치경제 { background: var(--social-bg); color: var(--social-text); border-color: var(--social-border); }
+.badge-과학기술 { background: var(--science-bg); color: var(--science-text); border-color: var(--science-border); }
+.badge-자기개발 { background: var(--self-bg); color: var(--self-text); border-color: var(--self-border); }
+
+/* 선택된 과목 선택 요약 */
+.selected-summary {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 12px; background: var(--teal-light); border-radius: var(--radius-sm);
+  margin-bottom: 10px; border: 1px solid var(--teal-mid);
+}
+.selected-summary span { font-size: 13px; font-weight: 600; color: var(--teal-dark); }
+.btn-select-all, .btn-clear-all {
+  font-size: 11px; color: var(--teal); background: none; border: none; cursor: pointer; font-weight: 600;
+  padding: 2px 6px; border-radius: 4px;
+}
+.btn-select-all:hover, .btn-clear-all:hover { background: var(--teal-mid); }
+
+/* ─── 조건 카드 ─── */
+.section-label { font-size: 12px; font-weight: 700; color: var(--text-sub); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* 공강일 */
+.day-selector { display: flex; gap: 6px; }
+.day-btn {
+  flex: 1; height: 40px; border-radius: var(--radius-sm); border: 2px solid var(--border);
+  background: white; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.15s; color: var(--text-sub);
+}
+.day-btn.selected { background: var(--teal); color: white; border-color: var(--teal); }
+.day-btn:hover:not(.selected) { border-color: var(--teal); color: var(--teal); }
+
+/* 토글 */
+.toggle-group { display: flex; flex-direction: column; gap: 8px; }
+.toggle-row { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: #fafbfc; cursor: pointer; }
+.toggle-row:hover { background: var(--teal-light); border-color: var(--teal-mid); }
+.toggle-row input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--teal); cursor: pointer; }
+.toggle-row span { font-size: 13px; font-weight: 500; }
+.morning-sub { padding: 8px 10px 8px 36px; background: var(--teal-light); border-radius: var(--radius-sm); margin-top: -4px; display: none; }
+.morning-sub label { font-size: 11px; color: var(--text-sub); display: block; margin-bottom: 4px; }
+.range-wrap { display: flex; align-items: center; gap: 10px; }
+.range-wrap input[type="range"] { flex: 1; accent-color: var(--teal); }
+.range-val { font-size: 13px; font-weight: 700; color: var(--teal); min-width: 30px; }
+
+/* 태그 입력 */
+.tag-input-area { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 6px 8px; min-height: 40px; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; background: white; }
+.tag-input-area:focus-within { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(77,170,170,0.12); }
+.tag { background: var(--teal-light); color: var(--teal-dark); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; border: 1px solid var(--teal-mid); display: inline-flex; align-items: center; gap: 4px; }
+.tag .rm { cursor: pointer; font-size: 12px; line-height: 1; opacity: 0.6; }
+.tag .rm:hover { opacity: 1; }
+.autocomplete-wrap { position: relative; flex: 1; min-width: 80px; }
+.autocomplete-wrap input { border: none; outline: none; font-size: 12px; width: 100%; background: transparent; padding: 2px 0; }
+.ac-list { position: absolute; z-index: 100; left: 0; right: 0; top: calc(100% + 6px); background: white; border: 1px solid var(--border); border-radius: 10px; box-shadow: var(--shadow-md); max-height: 200px; overflow-y: auto; }
+.ac-item { padding: 8px 12px; font-size: 13px; cursor: pointer; color: var(--text); }
+.ac-item:hover { background: var(--teal-light); color: var(--teal-dark); }
+
+/* 생성 버튼 */
+.btn-gen {
+  width: 100%; padding: 13px; border: none; border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--teal) 0%, #5ec4c0 100%);
+  color: white; font-size: 15px; font-weight: 700; cursor: pointer;
+  transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-gen:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(77,170,170,0.4); }
+.btn-gen:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+.spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.35); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── 결과 패널 ─── */
+.results-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; }
+.empty-state { padding: 80px 20px; text-align: center; color: var(--text-muted); }
+.empty-state .big-icon { font-size: 56px; margin-bottom: 12px; }
+.empty-state p { font-size: 14px; line-height: 1.7; }
+
+/* 결과 탭 */
+.result-header { padding: 16px 20px 0; border-bottom: 1px solid var(--border); }
+.result-header h2 { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+.result-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 0; }
+.result-tabs::-webkit-scrollbar { display: none; }
+.res-tab {
+  padding: 7px 14px; border-radius: 8px 8px 0 0; border: 1.5px solid var(--border); border-bottom: none;
+  background: var(--bg); cursor: pointer; font-size: 12px; font-weight: 600; color: var(--text-sub);
+  white-space: nowrap; transition: all 0.15s; margin-bottom: -1px;
+}
+.res-tab.active { background: white; color: var(--teal); border-color: var(--teal); }
+.res-tab .sc { font-weight: 800; }
+
+/* 요약 칩 */
+.result-body { padding: 16px 20px; }
+.summary-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.sum-chip { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 6px 12px; font-size: 12px; font-weight: 600; color: var(--text-sub); }
+.sum-chip strong { color: var(--teal); font-size: 15px; }
+
+/* 시간표 */
+.timetable-wrap { overflow-x: auto; }
+.timetable { width: 100%; border-collapse: collapse; table-layout: fixed; min-width: 520px; }
+.timetable th { background: var(--teal-light); padding: 8px 4px; font-size: 12px; font-weight: 700; color: var(--teal-dark); text-align: center; border: 1px solid var(--teal-mid); }
+.timetable td { border: 1px solid #f0f2f5; height: 26px; vertical-align: top; position: relative; padding: 0; background: white; }
+.timetable .time-col { width: 50px; font-size: 10px; color: var(--text-muted); text-align: right; padding: 0 6px 0 0; background: #fafbfc; font-weight: 600; border-right: 2px solid var(--border); }
+
+.class-block {
+  position: absolute; left: 2px; right: 2px; border-radius: 5px;
+  padding: 3px 5px; font-size: 10px; overflow: hidden; cursor: default; z-index: 1;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.class-block .cb-name { font-weight: 700; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.class-block .cb-prof { opacity: 0.75; font-size: 9px; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* 블록 색상 - 카테고리별 */
+.cb-major   { background: #eef2ff; border-left: 3px solid #6366f1; color: #3730a3; }
+.cb-req     { background: #fef9c3; border-left: 3px solid #eab308; color: #713f12; }
+.cb-human   { background: #fce7f3; border-left: 3px solid #ec4899; color: #831843; }
+.cb-culture { background: #fae8ff; border-left: 3px solid #a855f7; color: #581c87; }
+.cb-social  { background: #dbeafe; border-left: 3px solid #3b82f6; color: #1e3a8a; }
+.cb-science { background: #d1fae5; border-left: 3px solid #10b981; color: #064e3b; }
+.cb-self    { background: #ffedd5; border-left: 3px solid #f97316; color: #7c2d12; }
+.cb-etc     { background: #f1f5f9; border-left: 3px solid #64748b; color: #334155; }
+
+/* 강의 목록 */
+.lec-list-wrap { margin-top: 16px; }
+.lec-list-title { font-size: 13px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+.comment-box { background: #f8fcfb; border: 1px solid #d7edea; border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 16px; color: var(--text-sub); }
+.comment-box .comment-title { font-size: 13px; font-weight: 700; color: var(--teal-dark); margin-bottom: 8px; }
+.comment-box .comment-text { font-size: 13px; line-height: 1.7; }
+.comment-box .comment-bullets { margin-top: 10px; padding-left: 18px; color: var(--text-sub); }
+.comment-box .comment-bullets li { margin-bottom: 4px; }
+.lec-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 6px; }
+.lec-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: white;
+}
+.lec-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.lec-info .ln { font-size: 12px; font-weight: 700; color: var(--text); }
+.lec-info .lm { font-size: 10px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+.lec-badge { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 8px; border: 1px solid; margin-top: 3px; display: inline-block; }
+
+/* ─── 반응형 ─── */
+@media (max-width: 960px) {
+  .layout { grid-template-columns: 1fr; }
+  .header h1 { font-size: 18px; }
+  .header-badge { display: none; }
+}
+
+/* 비활성 오버레이 */
+.disabled-overlay { opacity: 0.45; pointer-events: none; }
+
+/* 구분선 */
+.divider { height: 1px; background: var(--border); margin: 14px 0; }
+
+/* 섹션 갭 */
+.form-group { margin-bottom: 14px; }
+.form-group:last-child { margin-bottom: 0; }
+
+/* 공지 */
+.notice-box { background: var(--teal-light); border: 1px solid var(--teal-mid); border-radius: var(--radius-sm); padding: 8px 12px; font-size: 12px; color: var(--teal-dark); margin-bottom: 12px; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>🎓 SSU 시간표 생성기</h1>
+    <p>과목 선택 → 조건 설정 → 최적 시간표 자동 생성</p>
+  </div>
+  <div class="header-badge">Soongsil Univ.</div>
+</div>
+
+<div class="container">
+<div class="layout">
+
+<!-- ========== 좌측 패널 ========== -->
+<div class="left-col">
+
+  <!-- 학년/학기 선택 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">📅</span> 학년 / 학기</div>
+    <div class="semester-select" id="semesterGrid">
+      <button class="sem-btn" data-val="1-1">1학년 1학기</button>
+      <button class="sem-btn" data-val="1-2">1학년 2학기</button>
+      <button class="sem-btn" data-val="2-1">2학년 1학기</button>
+      <button class="sem-btn" data-val="2-2">2학년 2학기</button>
+      <button class="sem-btn" data-val="3-1">3학년 1학기</button>
+      <button class="sem-btn" data-val="3-2">3학년 2학기</button>
+      <button class="sem-btn" data-val="4-1">4학년 1학기</button>
+      <button class="sem-btn" data-val="4-2">4학년 2학기</button>
+    </div>
+
+    <!-- 과목 선택 -->
+    <div id="courseArea" style="display:none;" class="course-selector-wrap">
+      <div class="divider"></div>
+      <div class="card-title" style="margin-bottom:10px;"><span class="icon">📚</span> 수강 과목 선택</div>
+
+      <!-- 카테고리 탭 -->
+      <div class="category-tabs" id="catTabs">
+        <button class="cat-tab active cat-all" data-cat="all">전체 <span class="cat-count" id="cnt-all">0</span></button>
+        <button class="cat-tab cat-major" data-cat="전공">전공 <span class="cat-count" id="cnt-major">0</span></button>
+        <button class="cat-tab cat-req" data-cat="교양필수">교양필수 <span class="cat-count" id="cnt-req">0</span></button>
+        <button class="cat-tab cat-human" data-cat="인간.언어">인간·언어 <span class="cat-count" id="cnt-human">0</span></button>
+        <button class="cat-tab cat-culture" data-cat="문화.예술">문화·예술 <span class="cat-count" id="cnt-culture">0</span></button>
+        <button class="cat-tab cat-social" data-cat="사회.정치.경제">사회·정치·경제 <span class="cat-count" id="cnt-social">0</span></button>
+        <button class="cat-tab cat-science" data-cat="과학.기술">과학·기술 <span class="cat-count" id="cnt-science">0</span></button>
+        <button class="cat-tab cat-self" data-cat="자기개발.진로탐색">자기개발·진로 <span class="cat-count" id="cnt-self">0</span></button>
+      </div>
+
+      <!-- 선택 요약 -->
+      <div class="selected-summary">
+        <span id="selectedCount">0개 선택됨</span>
+        <div style="display:flex;gap:4px;">
+          <button class="btn-select-all" onclick="selectCurrentCategory()">이 분류 전체</button>
+          <button class="btn-clear-all" onclick="clearAll()">전체 해제</button>
+        </div>
+      </div>
+
+      <!-- 과목 목록 -->
+      <div class="course-list" id="courseList"></div>
+    </div>
+  </div>
+
+  <!-- 조건 설정 -->
+  <div class="card disabled-overlay" id="constraintsCard">
+    <div class="card-title"><span class="icon">⚙️</span> 조건 설정</div>
+
+    <!-- 공강 요일 -->
+    <div class="form-group">
+      <div class="section-label">공강 요일</div>
+      <div class="day-selector" id="daySelector">
+        <button class="day-btn" data-day="월">월</button>
+        <button class="day-btn" data-day="화">화</button>
+        <button class="day-btn" data-day="수">수</button>
+        <button class="day-btn" data-day="목">목</button>
+        <button class="day-btn" data-day="금">금</button>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 토글 옵션 -->
+    <div class="form-group">
+      <div class="section-label">시간 조건</div>
+      <div class="toggle-group">
+        <label class="toggle-row">
+          <input type="checkbox" id="chkMorning">
+          <span>🌅 아침 수업 제외</span>
+        </label>
+        <div class="morning-sub" id="morningCutoffWrap">
+          <label>기준 시간</label>
+          <div class="range-wrap">
+            <input type="range" id="morningCutoff" min="8" max="12" value="10" step="1">
+            <span class="range-val" id="morningCutoffVal">10시</span>
+          </div>
+        </div>
+        <label class="toggle-row">
+          <input type="checkbox" id="chkLunch">
+          <span>🍱 점심시간 확보 (11:30~13:00)</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 교수 설정 -->
+    <div class="form-group">
+      <div class="section-label">교수 선호 설정</div>
+      <div style="margin-bottom:10px;">
+        <div class="section-label" style="font-size:11px; margin-bottom:5px;">❤️ 선호 교수</div>
+        <div class="tag-input-area" id="preferredWrap">
+          <div class="autocomplete-wrap">
+            <input type="text" id="preferredInput" placeholder="교수명 입력...">
+            <div class="ac-list" id="acListPreferred" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-bottom:8px;">
+        <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;">
+          <input type="checkbox" id="forcePreferred"> 선호 교수 필수 포함
+        </label>
+      </div>
+      <div>
+        <div class="section-label" style="font-size:11px; margin-bottom:5px;">🚫 기피 교수</div>
+        <div class="tag-input-area" id="avoidedWrap">
+          <div class="autocomplete-wrap">
+            <input type="text" id="avoidedInput" placeholder="교수명 입력...">
+            <div class="ac-list" id="acListAvoided" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <button class="btn-gen" id="btnGenerate" onclick="generateTimetable()">
+      <span>🚀</span> 시간표 생성하기
+    </button>
+  </div>
+
+</div><!-- /left-col -->
+
+<!-- ========== 우측 패널 ========== -->
+<div class="right-col">
+  <div class="results-card" id="resultsCard">
+    <div class="empty-state" id="emptyState">
+      <div class="big-icon">🗓️</div>
+      <p>학년/학기를 선택하고<br>수강 과목을 골라주세요</p>
+    </div>
+    <div id="resultsContent" style="display:none;">
+      <div class="result-header">
+        <h2>📋 생성된 시간표</h2>
+        <div class="result-tabs" id="resultTabs"></div>
+      </div>
+      <div class="result-body">
+        <div class="summary-bar" id="summaryBar"></div>
+        <div class="comment-box" id="resultComment"></div>
+        <div class="timetable-wrap">
+          <table class="timetable" id="timetable"></table>
+        </div>
+        <div class="lec-list-wrap">
+          <div class="lec-list-title">과목 목록</div>
+          <div class="lec-items" id="lecItems"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /layout -->
+</div>
+
+<script>
+const API = '';
+let curriculumData = [];
+let allCourses = [];
+let selectedCourses = new Set();
+let activeCat = 'all';
+let preferredProfs = [];
+let avoidedProfs = [];
+let solveResults = [];
+let currentIdx = 0;
+window.ALL_PROFESSORS = [];
+
+// ──────────────────────────────────────────
+//  카테고리 정규화
+// ──────────────────────────────────────────
+function normalizeCat(course) {
+  const dt = course.dataset_type || course.category || '';
+  const sc = course.source_category || '';
+  // Curriculum 과목들(전필, 전선) 또는 전공 과목 모두 "전공"으로 표시
+  if (dt === '전공' || sc.includes('전') || sc.includes('교직전공') || dt === '전필' || dt === '전선') return '전공';
+  if (dt === '교양필수') return '교양필수';
+  const mapSc = { '인간.언어': '인간.언어', '문화.예술': '문화.예술', '사회.정치.경제': '사회.정치.경제', '과학.기술': '과학.기술', '자기개발.진로탐색': '자기개발.진로탐색' };
+  if (mapSc[sc]) return mapSc[sc];
+  if (dt === '교양선택') return '인간.언어'; // fallback
+  return '기타';
+}
+
+const CAT_LABEL = {
+  '전공': '전공', '교양필수': '교양필수', '인간.언어': '인간·언어',
+  '문화.예술': '문화·예술', '사회.정치.경제': '사회·정치·경제',
+  '과학.기술': '과학·기술', '자기개발.진로탐색': '자기개발·진로', '기타': '기타'
+};
+const CAT_BADGE_CLASS = {
+  '전공': 'badge-major', '교양필수': 'badge-교양필수', '인간.언어': 'badge-인간언어',
+  '문화.예술': 'badge-문화예술', '사회.정치.경제': 'badge-사회정치경제',
+  '과학.기술': 'badge-과학기술', '자기개발.진로탐색': 'badge-자기개발'
+};
+const CB_CLASS = {
+  '전공': 'cb-major', '교양필수': 'cb-req', '인간.언어': 'cb-human',
+  '문화.예술': 'cb-culture', '사회.정치.경제': 'cb-social',
+  '과학.기술': 'cb-science', '자기개발.진로탐색': 'cb-self', '기타': 'cb-etc'
+};
+const DOT_COLORS = {
+  '전공': '#6366f1', '교양필수': '#eab308', '인간.언어': '#ec4899',
+  '문화.예술': '#a855f7', '사회.정치.경제': '#3b82f6',
+  '과학.기술': '#10b981', '자기개발.진로탐색': '#f97316', '기타': '#64748b'
+};
+
+// ──────────────────────────────────────────
+//  학년/학기 선택
+// ──────────────────────────────────────────
+document.querySelectorAll('.sem-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.sem-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    loadCurriculum(btn.dataset.val);
+  });
+});
+
+async function loadCurriculum(gs) {
+  selectedCourses.clear();
+  try {
+    const res = await fetch(API + '/api/curriculum');
+    const data = await res.json();
+    const raw = data.curriculum[gs] || [];
+
+    // 과목 고유화 (이름 기준)
+    const seen = new Set();
+    allCourses = [];
+    raw.forEach(c => {
+      if (!seen.has(c.name)) {
+        seen.add(c.name);
+        // source_category가 없으면 sections에서 우선 섹션의 source_category를 사용하고, 없으면 섹션의 category로 폴백
+        if (!c.source_category && c.sections && c.sections.length > 0) {
+          c.source_category = c.sections[0].source_category || c.sections[0].category || '';
+        }
+        allCourses.push(c);
+      }
+    });
+
+    updateCatCounts();
+    renderCourseList();
+    document.getElementById('courseArea').style.display = 'block';
+    document.getElementById('constraintsCard').classList.remove('disabled-overlay');
+  } catch(e) {
+    alert('커리큘럼 로드 실패: ' + e.message + '\n서버가 실행 중인지 확인해주세요.');
+  }
+}
+
+// ──────────────────────────────────────────
+//  카테고리 탭
+// ──────────────────────────────────────────
+document.querySelectorAll('.cat-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    activeCat = tab.dataset.cat;
+    renderCourseList();
+  });
+});
+
+function updateCatCounts() {
+  const counts = {};
+  allCourses.forEach(c => {
+    const cat = normalizeCat(c);
+    counts[cat] = (counts[cat] || 0) + 1;
+  });
+  document.getElementById('cnt-all').textContent = allCourses.length;
+  document.getElementById('cnt-major').textContent = counts['전공'] || 0;
+  document.getElementById('cnt-req').textContent = counts['교양필수'] || 0;
+  document.getElementById('cnt-human').textContent = counts['인간.언어'] || 0;
+  document.getElementById('cnt-culture').textContent = counts['문화.예술'] || 0;
+  document.getElementById('cnt-social').textContent = counts['사회.정치.경제'] || 0;
+  document.getElementById('cnt-science').textContent = counts['과학.기술'] || 0;
+  document.getElementById('cnt-self').textContent = counts['자기개발.진로탐색'] || 0;
+}
+
+function renderCourseList() {
+  const list = document.getElementById('courseList');
+  const filtered = activeCat === 'all' ? allCourses : allCourses.filter(c => normalizeCat(c) === activeCat);
+  list.innerHTML = '';
+  filtered.forEach(c => {
+    const cat = normalizeCat(c);
+    const checked = selectedCourses.has(c.name);
+    const isElective = cat !== '전공' && cat !== '교양필수';
+    const displayCat = isElective ? '교양선택' : cat;
+    const badgeClass = isElective ? 'badge-교양선택' : CAT_BADGE_CLASS[cat] || '';
+    const div = document.createElement('div');
+    div.className = 'course-item' + (checked ? ' checked' : '');
+    div.dataset.name = c.name;
+    div.innerHTML = `
+      <input type="checkbox" ${checked ? 'checked' : ''} id="chk-${CSS.escape(c.name)}">
+      <div class="course-item-info">
+        <div class="course-name" title="${c.name}">${c.name}</div>
+        <div class="course-meta">${c.section_count || 0}개 분반 · ${c.sections && c.sections[0] ? (c.sections[0].credits || '-') : '-'}학점</div>
+      </div>
+      <span class="course-badge ${badgeClass}">${displayCat}</span>
+    `;
+    div.addEventListener('click', (e) => {
+      if (e.target.type !== 'checkbox') div.querySelector('input').click();
+    });
+    div.querySelector('input').addEventListener('change', function() {
+      if (this.checked) { selectedCourses.add(c.name); div.classList.add('checked'); }
+      else { selectedCourses.delete(c.name); div.classList.remove('checked'); }
+      updateSelectedCount();
+    });
+    list.appendChild(div);
+  });
+  updateSelectedCount();
+}
+
+function updateSelectedCount() {
+  let totalCredits = 0;
+  selectedCourses.forEach(name => {
+    const course = allCourses.find(c => c.name === name);
+    if (course && course.sections && course.sections[0]) {
+      totalCredits += course.sections[0].credits || 0;
+    }
+  });
+  document.getElementById('selectedCount').textContent = `${selectedCourses.size}개 선택됨 · ${totalCredits}학점`;
+}
+
+function selectCurrentCategory() {
+  const filtered = activeCat === 'all' ? allCourses : allCourses.filter(c => normalizeCat(c) === activeCat);
+  filtered.forEach(c => selectedCourses.add(c.name));
+  renderCourseList();
+}
+
+function clearAll() {
+  selectedCourses.clear();
+  renderCourseList();
+}
+
+// ──────────────────────────────────────────
+//  공강일
+// ──────────────────────────────────────────
+document.querySelectorAll('.day-btn').forEach(btn => {
+  btn.addEventListener('click', () => btn.classList.toggle('selected'));
+});
+
+// ──────────────────────────────────────────
+//  아침 수업 토글
+// ──────────────────────────────────────────
+document.getElementById('chkMorning').addEventListener('change', function() {
+  document.getElementById('morningCutoffWrap').style.display = this.checked ? 'block' : 'none';
+});
+document.getElementById('morningCutoff').addEventListener('input', function() {
+  document.getElementById('morningCutoffVal').textContent = this.value + '시';
+});
+
+// ──────────────────────────────────────────
+//  교수 자동완성
+// ──────────────────────────────────────────
+async function loadProfessors() {
+  const eps = [API + '/api/professors', 'http://127.0.0.1:8000/api/professors'];
+  for (const ep of eps) {
+    try {
+      const res = await fetch(ep, { cache: 'no-store' });
+      if (!res.ok) continue;
+      const data = await res.json();
+      window.ALL_PROFESSORS = data.professors || [];
+      return;
+    } catch(e) {}
+  }
+}
+loadProfessors();
+
+function setupProf(inputId, listId, wrapId, arr) {
+  const input = document.getElementById(inputId);
+  const list = document.getElementById(listId);
+  const wrap = document.getElementById(wrapId);
+
+  function render(q) {
+    const filtered = (q ? window.ALL_PROFESSORS.filter(p => p.toLowerCase().includes(q.toLowerCase())) : window.ALL_PROFESSORS).filter(p => !arr.includes(p)).slice(0, 100);
+    if (!filtered.length) { list.style.display = 'none'; return; }
+    list.innerHTML = filtered.map(p => `<div class="ac-item">${p}</div>`).join('');
+    list.style.display = 'block';
+    list.querySelectorAll('.ac-item').forEach(item => {
+      item.addEventListener('click', () => addProf(item.textContent, inputId, listId, wrapId, arr));
+    });
+  }
+
+  input.addEventListener('input', () => render(input.value));
+  input.addEventListener('focus', () => render(input.value));
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && input.value.trim()) { addProf(input.value.trim(), inputId, listId, wrapId, arr); }
+  });
+}
+
+function addProf(name, inputId, listId, wrapId, arr) {
+  if (!name || arr.includes(name)) return;
+  arr.push(name);
+  const input = document.getElementById(inputId);
+  const list = document.getElementById(listId);
+  const wrap = document.getElementById(wrapId);
+  const tag = document.createElement('span');
+  tag.className = 'tag';
+  tag.dataset.name = name;
+  tag.innerHTML = `${name}<span class="rm">×</span>`;
+  tag.querySelector('.rm').addEventListener('click', () => {
+    const idx = arr.indexOf(name); if (idx > -1) arr.splice(idx, 1);
+    tag.remove();
+  });
+  wrap.insertBefore(tag, wrap.querySelector('.autocomplete-wrap'));
+  input.value = '';
+  list.style.display = 'none';
+}
+
+setupProf('preferredInput', 'acListPreferred', 'preferredWrap', preferredProfs);
+setupProf('avoidedInput', 'acListAvoided', 'avoidedWrap', avoidedProfs);
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.tag-input-area')) {
+    document.querySelectorAll('.ac-list').forEach(l => l.style.display = 'none');
+  }
+});
+
+// ──────────────────────────────────────────
+//  시간표 생성
+// ──────────────────────────────────────────
+async function generateTimetable() {
+  if (selectedCourses.size === 0) { alert('수강할 과목을 최소 1개 선택해주세요.'); return; }
+  const btn = document.getElementById('btnGenerate');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> 생성 중...';
+
+  const gs = document.querySelector('.sem-btn.active')?.dataset.val || '';
+  const freeDays = [...document.querySelectorAll('.day-btn.selected')].map(b => b.dataset.day);
+  const noMorning = document.getElementById('chkMorning').checked;
+  const cutoff = document.getElementById('morningCutoff').value;
+
+  try {
+    const res = await fetch(API + '/api/solve', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        grade_semester: gs,
+        selected_courses: [...selectedCourses],
+        free_days: freeDays,
+        no_morning: noMorning,
+        morning_cutoff: cutoff + ':00',
+        lunch_break: document.getElementById('chkLunch').checked,
+        preferred_profs: preferredProfs,
+        force_preferred: document.getElementById('forcePreferred').checked,
+        avoided_profs: avoidedProfs,
+        timeout: 10, max_results: 5
+      })
+    });
+    const data = await res.json();
+    if (!data.success) { alert('생성 실패: ' + (data.error || '알 수 없는 오류')); }
+    else if (data.count > 0) { solveResults = data.results; currentIdx = 0; renderResults(); }
+    else {
+      document.getElementById('emptyState').innerHTML = `<div class="big-icon">😢</div><p>조건에 맞는 시간표를 찾지 못했어요.<br>조건을 완화해보세요!</p>`;
+      document.getElementById('emptyState').style.display = 'block';
+      document.getElementById('resultsContent').style.display = 'none';
+    }
+  } catch(e) { alert('오류: ' + e.message); }
+  finally { btn.disabled = false; btn.innerHTML = '<span>🚀</span> 시간표 생성하기'; }
+}
+
+// ──────────────────────────────────────────
+//  결과 렌더링
+// ──────────────────────────────────────────
+const DAYS = ['월','화','수','목','금'];
+
+function getLecCat(lec) {
+  const cat = lec.category || '';
+  const cats = ['전공', '교양필수', '인간.언어', '문화.예술', '사회.정치.경제', '과학.기술', '자기개발.진로탐색'];
+  for (const c of cats) if (cat.includes(c.replace('.','.')) || cat === c) return c;
+  if (cat.includes('전') && cat.includes('전자')) return '전공';
+  return '기타';
+}
+
+function renderResults() {
+  document.getElementById('emptyState').style.display = 'none';
+  document.getElementById('resultsContent').style.display = 'block';
+
+  // 탭
+  const tabs = document.getElementById('resultTabs');
+  tabs.innerHTML = '';
+  solveResults.forEach((r, i) => {
+    const t = document.createElement('div');
+    t.className = 'res-tab' + (i === currentIdx ? ' active' : '');
+    t.innerHTML = `#${i+1} <span class="sc">${r.score}점</span> · ${r.total_credits}학점`;
+    t.onclick = () => { currentIdx = i; renderResults(); };
+    tabs.appendChild(t);
+  });
+
+  const r = solveResults[currentIdx];
+  const activeDays = new Set(r.lectures.flatMap(l => l.time_slots.map(s => s.day)));
+  const freeDays = DAYS.filter(d => !activeDays.has(d));
+
+  document.getElementById('summaryBar').innerHTML = `
+    <div class="sum-chip">🏆 <strong>${r.score}</strong>점</div>
+    <div class="sum-chip">📚 <strong>${r.total_credits}</strong>학점</div>
+    <div class="sum-chip">🏖️ 공강 <strong>${freeDays.length ? freeDays.join(', ') : '없음'}</strong></div>
+    <div class="sum-chip">📘 <strong>${r.lectures.length}</strong>과목</div>
+  `;
+  document.getElementById('resultComment').innerHTML = getScheduleComment(r, freeDays);
+
+  renderGrid(r);
+  renderLecList(r);
+}
+
+function getScheduleComment(r, freeDays) {
+  const slots = r.lectures.flatMap(l => l.time_slots);
+  const morningCount = slots.filter(s => {
+    const [h,m] = s.start.split(':').map(Number);
+    return h * 60 + m < 600;
+  }).length;
+  const daySlots = DAYS.map(d => slots.filter(s => s.day === d));
+  const gaps = daySlots.flatMap(slots => {
+    if (slots.length <= 1) return [];
+    const sorted = slots.slice().sort((a,b) => {
+      const at = a.start.split(':').map(Number); const bt = b.start.split(':').map(Number);
+      return at[0]*60+at[1] - (bt[0]*60+bt[1]);
+    });
+    const dayGaps = [];
+    for (let i=1; i<sorted.length; i++) {
+      const prevEnd = sorted[i-1].end.split(':').map(Number);
+      const start = sorted[i].start.split(':').map(Number);
+      const prevMin = prevEnd[0]*60 + prevEnd[1];
+      const curMin = start[0]*60 + start[1];
+      const gap = curMin - prevMin;
+      if (gap > 0) dayGaps.push(gap);
+    }
+    return dayGaps;
+  });
+  const avgGap = gaps.length ? Math.round(gaps.reduce((a,b)=>a+b,0)/gaps.length) : 0;
+
+  const lines = [];
+  lines.push('이 시간표는 AI 최적화를 통해 공강, 학점, 수업 집중도, 아침 시간대, 교실 이동을 함께 고려하여 생성되었습니다.');
+  if (freeDays.length) lines.push(`특히 ${freeDays.join(', ')}요일에 공강이 있어 주중 여유를 확보할 수 있습니다.`);
+  else lines.push('공강은 없지만 하루에 몰아서 집중하는 형태로 수업 일정을 구성했습니다.');
+  if (morningCount === 0) lines.push('아침 수업이 없으므로 느긋하게 하루를 시작할 수 있습니다.');
+  else if (morningCount <= 1) lines.push('아침 수업이 적어 무리 없이 출발할 수 있습니다.');
+  if (avgGap > 30) lines.push('수업 사이 평균 휴식 시간이 충분해서 이동과 점심을 준비하기 좋습니다.');
+  else if (avgGap > 0) lines.push('수업 사이 빈 시간이 적어 한 번 나가면 효율적으로 수업을 이어갈 수 있습니다.');
+  lines.push('연강일에는 가능한 한 강의실 간 이동 거리를 짧게 유지하도록 구성했습니다.');
+
+  const strong = r.score >= 85 ? '우수한 구성입니다.' : r.score >= 70 ? '균형 잡힌 구성입니다.' : '조건을 조금만 조정하면 더 나은 시간표를 만들 수 있습니다.';
+  lines.push(strong);
+
+  return `
+    <div class="comment-title">시간표 추천 이유</div>
+    <div class="comment-text">${lines[0]}</div>
+    <ul class="comment-bullets">
+      ${lines.slice(1).map(line => `<li>${line}</li>`).join('')}
+    </ul>
+  `;
+}
+
+function renderGrid(r) {
+  let minH = 20, maxH = 8;
+  r.lectures.forEach(l => l.time_slots.forEach(s => {
+    const sh = parseInt(s.start); const eh = Math.ceil(parseInt(s.end.split(':')[0]) + parseInt(s.end.split(':')[1])/60);
+    if (parseInt(s.start) < minH) minH = parseInt(s.start);
+    if (eh > maxH) maxH = eh;
+  }));
+  // 정확히 계산
+  minH = 24; maxH = 0;
+  r.lectures.forEach(l => l.time_slots.forEach(s => {
+    const sh = parseInt(s.start.split(':')[0]);
+    const eh = parseInt(s.end.split(':')[0]) + (parseInt(s.end.split(':')[1]) > 0 ? 1 : 0);
+    if (sh < minH) minH = sh;
+    if (eh > maxH) maxH = eh;
+  }));
+  minH = Math.max(8, minH); maxH = Math.min(22, maxH);
+
+  let html = '<thead><tr><th style="width:50px">시간</th>';
+  DAYS.forEach(d => html += `<th>${d}</th>`);
+  html += '</tr></thead><tbody>';
+
+  for (let h = minH; h < maxH; h++) {
+    for (let half = 0; half < 2; half++) {
+      html += '<tr>';
+      if (half === 0) html += `<td class="time-col" rowspan="2">${String(h).padStart(2,'0')}:00</td>`;
+      DAYS.forEach(d => html += `<td data-day="${d}" data-h="${h}" data-hf="${half}"></td>`);
+      html += '</tr>';
+    }
+  }
+  html += '</tbody>';
+  document.getElementById('timetable').innerHTML = html;
+  const tbl = document.getElementById('timetable');
+
+  r.lectures.forEach(lec => {
+    const cat = getLecCat(lec);
+    const cbCls = CB_CLASS[cat] || 'cb-etc';
+    lec.time_slots.forEach(slot => {
+      const sm = parseInt(slot.start.split(':')[0])*60 + parseInt(slot.start.split(':')[1]);
+      const em = parseInt(slot.end.split(':')[0])*60 + parseInt(slot.end.split(':')[1]);
+      const sh = Math.floor(sm/60), shf = sm%60 >= 30 ? 1 : 0;
+      const cell = tbl.querySelector(`td[data-day="${slot.day}"][data-h="${sh}"][data-hf="${shf}"]`);
+      if (!cell) return;
+      const rowH = 26;
+      const topOff = (sm%30)/30*rowH;
+      const height = (em-sm)/30*rowH;
+      const block = document.createElement('div');
+      block.className = `class-block ${cbCls}`;
+      block.style.cssText = `top:${topOff}px; height:${Math.max(height-2,14)}px;`;
+      block.innerHTML = `<div class="cb-name">${lec.name}</div><div class="cb-prof">${lec.professor||''}</div>`;
+      block.title = `${lec.name}\n${lec.professor||''}\n${slot.start}~${slot.end}\n${slot.room||''}`;
+      cell.style.position = 'relative';
+      cell.appendChild(block);
+    });
+  });
+}
+
+function renderLecList(r) {
+  const wrap = document.getElementById('lecItems');
+  wrap.innerHTML = '';
+  r.lectures.forEach(lec => {
+    const cat = getLecCat(lec);
+    const timeStr = lec.time_slots.map(s => `${s.day} ${s.start}~${s.end}`).join(', ');
+    const room = lec.time_slots[0]?.room || '';
+    const item = document.createElement('div');
+    item.className = 'lec-item';
+    item.innerHTML = `
+      <div class="lec-dot" style="background:${DOT_COLORS[cat]||'#64748b'}"></div>
+      <div class="lec-info">
+        <div class="ln">${lec.name}</div>
+        <div class="lm">${lec.professor||'미정'} · ${lec.credits}학점</div>
+        <div class="lm">${timeStr}</div>
+        ${room ? `<div class="lm">${room}</div>` : ''}
+        <span class="lec-badge ${CAT_BADGE_CLASS[cat]||''}">${CAT_LABEL[cat]||cat}</span>
+      </div>
+    `;
+    wrap.appendChild(item);
+  });
+}
+</script>
+</body>
+</html>
