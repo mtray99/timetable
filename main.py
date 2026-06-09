@@ -210,7 +210,10 @@ async def solve(req: SolveRequest):
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_frontend():
-    html_path = os.path.join(os.path.dirname(__file__), "index.html")
+    base = os.path.dirname(__file__)
+    preferred_path = os.path.join(base, "index (1).html")
+    fallback_path = os.path.join(base, "index.html")
+    html_path = preferred_path if os.path.exists(preferred_path) else fallback_path
     if os.path.exists(html_path):
         with open(html_path, "r", encoding="utf-8") as f:
             return f.read()
