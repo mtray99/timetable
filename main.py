@@ -208,7 +208,7 @@ async def solve(req: SolveRequest):
     return {"success": True, "count": len(results), "results": results}
 
 
-@app.get("/", response_class=HTMLResponse)
+@app.api_route("/", methods=["GET", "HEAD"], response_class=HTMLResponse)
 async def serve_frontend():
     base = os.path.dirname(__file__)
     preferred_path = os.path.join(base, "index (1).html")
